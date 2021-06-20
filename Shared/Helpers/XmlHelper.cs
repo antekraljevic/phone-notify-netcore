@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Xml;
 
-namespace PhoneNotify.Shared
+namespace PhoneNotify.Shared.Helpers
 {
     public static class XmlHelper
     {
@@ -39,7 +39,7 @@ namespace PhoneNotify.Shared
                     return (false, String.Empty);
                 }
             }
-            catch (XmlException)
+            catch (XmlException e)
             {
                 return (false, String.Empty);
             }

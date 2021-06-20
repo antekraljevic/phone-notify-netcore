@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using PhoneNotify.Models;
-using PhoneNotify.Shared;
+using PhoneNotify.Shared.Helpers;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -46,16 +46,34 @@ namespace PhoneNotify.Controllers
         [ProducesResponseType(typeof(ResultAsArrayOfStrings), StatusCodes.Status200OK)]
         public ActionResult<ResultAsArrayOfStrings> GetAssignedNumbers([Required, FromQuery] string licenseKey)
         {
-            var xmlResult = @"<?xml version=""1.0"" encoding=""utf - 8""?>
-                <soap:Envelope xmlns:soap =""http://www.w3.org/2003/05/soap-envelope"" xmlns: xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns: xsd=""http://www.w3.org/2001/XMLSchema"">
+            // send request to SOAP API endpoint first, get result and return it as json
+
+            var xmlResult = @"<?xml version=""1.0"" encoding=""utf-8""?>
+                <soap:Envelope xmlns:soap =""http://www.w3.org/2003/05/soap-envelope"" xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"">
                     <soap:Body>
                         <GetAssignedNumbersResponse xmlns=""http://ws.cdyne.com/NotifyWS/"">
-                            <GetAssignedNumbersResult/>
+                            <GetAssignedNumbersResult>
+                                <string>test1</string>
+                                <string>test2</string>
+                            </GetAssignedNumbersResult>
                         </GetAssignedNumbersResponse>
                     </soap:Body>
                 </soap:Envelope>";
 
-            return Ok();
+            var json = XmlHelper.ParseXmlToJson(xmlResult);
+
+            if (json == null)
+            {
+                return BadRequest();
+            }
+
+            ResultAsArrayOfStrings result = new ResultAsArrayOfStrings(
+                JsonHelper.GetListOfStringsFromJsonObject(
+                    json["soap:Envelope"]["soap:Body"]["GetAssignedNumbersResponse"]["GetAssignedNumbersResult"]["string"]
+                    )
+                );
+
+            return Ok(result);
         }
     }
 }

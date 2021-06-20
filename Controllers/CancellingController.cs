@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using PhoneNotify.Models;
-using PhoneNotify.Shared;
+using PhoneNotify.Shared.Helpers;
 using System.ComponentModel.DataAnnotations;
 
 namespace PhoneNotify.Controllers

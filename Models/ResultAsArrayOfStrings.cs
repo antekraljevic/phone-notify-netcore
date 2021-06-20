@@ -9,9 +9,9 @@ namespace PhoneNotify.Models
     {
         public IEnumerable<string> Result { get; set; }
 
-        public ResultAsArrayOfStrings(string[] array)
+        public ResultAsArrayOfStrings(List<string> list)
         {
-            this.Result = array;
+            this.Result = list;
         }
     }
 }
