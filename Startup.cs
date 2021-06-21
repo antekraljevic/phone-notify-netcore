@@ -2,7 +2,10 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using PhoneNotify.Middleware;
+using PhoneNotifySoapService;
 
 namespace PhoneNotify
 {
@@ -21,6 +24,14 @@ namespace PhoneNotify
             services.AddMvc().AddNewtonsoftJson();
             services.AddHttpClient();
             services.AddControllers();
+            services.AddScoped<PhoneNotifySoap>(provider => {
+                var client = new PhoneNotifySoapClient(PhoneNotifySoapClient.EndpointConfiguration.PhoneNotifySoap12);
+
+                client.ClientCredentials.UserName.UserName = Configuration["PhoneNotifySoapService:Username"];
+                client.ClientCredentials.UserName.Password = Configuration["PhoneNotifySoapService:Password"];
+
+                return client;
+            });
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v2", new OpenApiInfo { Title = "PhoneNotify", Version = "v2" });
@@ -30,7 +41,10 @@ namespace PhoneNotify
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            app.UseDeveloperExceptionPage();
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
 
             app.UseSwagger();
 
@@ -42,6 +56,8 @@ namespace PhoneNotify
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseMiddleware<ExceptionMiddleware>();
 
             app.UseEndpoints(endpoints =>
             {

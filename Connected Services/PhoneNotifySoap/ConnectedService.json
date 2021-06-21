@@ -1,0 +1,31 @@
+﻿{
+  "ProviderId": "Microsoft.VisualStudio.ConnectedService.Wcf",
+  "Version": "15.0.40203.910",
+  "GettingStartedDocument": {
+    "Uri": "https://go.microsoft.com/fwlink/?linkid=858517"
+  },
+  "ExtendedData": {
+    "inputs": [
+      "http://ws.cdyne.com/NotifyWS/PhoneNotify.asmx"
+    ],
+    "collectionTypes": [
+      "System.Array",
+      "System.Collections.Generic.Dictionary`2"
+    ],
+    "namespaceMappings": [
+      "*, PhoneNotifySoap"
+    ],
+    "references": [
+      "Microsoft.AspNetCore.JsonPatch, {Microsoft.AspNetCore.JsonPatch, 3.1.16}",
+      "Microsoft.AspNetCore.Mvc.NewtonsoftJson, {Microsoft.AspNetCore.Mvc.NewtonsoftJson, 3.1.16}",
+      "Microsoft.OpenApi, {Microsoft.OpenApi, 1.2.3}",
+      "Newtonsoft.Json, {Newtonsoft.Json, 13.0.1}",
+      "Newtonsoft.Json.Bson, {Newtonsoft.Json.Bson, 1.0.2}",
+      "Swashbuckle.AspNetCore.Swagger, {Swashbuckle.AspNetCore.Swagger, 6.1.4}",
+      "Swashbuckle.AspNetCore.SwaggerGen, {Swashbuckle.AspNetCore.SwaggerGen, 6.1.4}",
+      "Swashbuckle.AspNetCore.SwaggerUI, {Swashbuckle.AspNetCore.SwaggerUI, 6.1.4}"
+    ],
+    "targetFramework": "netcoreapp3.1",
+    "typeReuseMode": "All"
+  }
+}

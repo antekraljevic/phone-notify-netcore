@@ -1,11 +1,10 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
-using PhoneNotify.Models;
-using PhoneNotify.Shared.Helpers;
-using System.Collections.Generic;
+using PhoneNotify.Shared.Validators;
+using PhoneNotifySoapService;
 using System.ComponentModel.DataAnnotations;
+using System.Threading.Tasks;
 
 namespace PhoneNotify.Controllers
 {
@@ -14,66 +13,37 @@ namespace PhoneNotify.Controllers
     [Produces("application/json")]
     public class LicenseController : ControllerBase
     {
-        private readonly ILogger<LicenseController> _logger;
+        private readonly PhoneNotifySoap _client;
 
-        public LicenseController(ILogger<LicenseController> logger)
+        public LicenseController(PhoneNotifySoap client)
         {
-            _logger = logger;
+            _client = client;
         }
 
         [HttpGet("assignincomingnumber")]
-        [ProducesResponseType(typeof(ResultAsBoolean), StatusCodes.Status200OK)]
-        public ActionResult<ResultAsBoolean> AssignIncomingNumber([Required, FromQuery] string incomingPhoneNumber, [Required, FromQuery] string licenseKey)
+        [ProducesResponseType(typeof(bool), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<ActionResult<bool>> AssignIncomingNumber([Required, FromQuery] string incomingPhoneNumber, [Required, FromQuery] string licenseKey)
         {
-            // send incomingPhoneNumber and licenseKey parameters to corresponding SOAP route, get result and parse it to JSON
-
-            var xmlResult = @"<?xml version='1.0' encoding='utf-8'?>
-            <boolean xmlns='http://ws.cdyne.com/NotifyWS/'>true</boolean>";
-
-            var json = XmlHelper.ParseXmlToJson(xmlResult);
-
-            if (json == null)
+            if (!InputParametersValidator.IsValidGuidFormat(licenseKey))
             {
                 return BadRequest();
             }
 
-            ResultAsBoolean result = new ResultAsBoolean((bool)json["boolean"]["#text"]);
-
-            return Ok(result);
+            return Ok(await _client.AssignIncomingNumberAsync(incomingPhoneNumber, licenseKey));
         }
 
         [HttpGet("getassignednumbers")]
-        [ProducesResponseType(typeof(ResultAsArrayOfStrings), StatusCodes.Status200OK)]
-        public ActionResult<ResultAsArrayOfStrings> GetAssignedNumbers([Required, FromQuery] string licenseKey)
+        [ProducesResponseType(typeof(string[]), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<ActionResult<string[]>> GetAssignedNumbers([Required, FromQuery] string licenseKey)
         {
-            // send request to SOAP API endpoint first, get result and return it as json
-
-            var xmlResult = @"<?xml version=""1.0"" encoding=""utf-8""?>
-                <soap:Envelope xmlns:soap =""http://www.w3.org/2003/05/soap-envelope"" xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"">
-                    <soap:Body>
-                        <GetAssignedNumbersResponse xmlns=""http://ws.cdyne.com/NotifyWS/"">
-                            <GetAssignedNumbersResult>
-                                <string>test1</string>
-                                <string>test2</string>
-                            </GetAssignedNumbersResult>
-                        </GetAssignedNumbersResponse>
-                    </soap:Body>
-                </soap:Envelope>";
-
-            var json = XmlHelper.ParseXmlToJson(xmlResult);
-
-            if (json == null)
+            if (!InputParametersValidator.IsValidGuidFormat(licenseKey))
             {
                 return BadRequest();
             }
 
-            ResultAsArrayOfStrings result = new ResultAsArrayOfStrings(
-                JsonHelper.GetListOfStringsFromJsonObject(
-                    json["soap:Envelope"]["soap:Body"]["GetAssignedNumbersResponse"]["GetAssignedNumbersResult"]["string"]
-                    )
-                );
-
-            return Ok(result);
+            return Ok(await _client.GetAssignedNumbersAsync(licenseKey));
         }
     }
 }

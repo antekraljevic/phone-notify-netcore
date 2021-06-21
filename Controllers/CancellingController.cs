@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
-using PhoneNotify.Models;
-using PhoneNotify.Shared.Helpers;
+using PhoneNotify.Shared.Validators;
+using PhoneNotifySoapService;
 using System.ComponentModel.DataAnnotations;
+using System.Threading.Tasks;
 
 namespace PhoneNotify.Controllers
 {
@@ -13,60 +13,51 @@ namespace PhoneNotify.Controllers
     [Produces("application/json")]
     public class CancellingController : ControllerBase
     {
-        private readonly ILogger<CancellingController> _logger;
+        private readonly PhoneNotifySoap _client;
 
-        public CancellingController(ILogger<CancellingController> logger)
+        public CancellingController(PhoneNotifySoap client)
         {
-            _logger = logger;
+            _client = client;
         }
 
         [HttpGet("cancelconference")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public ActionResult CancelConference([Required, FromQuery] string conferenceKey)
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> CancelConference([Required, FromQuery] string conferenceKey)
         {
-            // send conferenceKey parameter to corresponding SOAP route, get result and parse it to JSON, surround with try catch, if there's no exception, return Ok();
+            if (!InputParametersValidator.IsValidGuidFormat(conferenceKey))
+            {
+                return BadRequest();
+            }
 
+            await _client.CancelConferenceAsync(conferenceKey);
             return Ok();
         }
 
         [HttpGet("cancelnotify")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        public ActionResult CancelNotify([Required, FromQuery] string queueId, [Required, FromQuery] string licenseKey)
+        [ProducesResponseType(typeof(bool), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<ActionResult<bool>> CancelNotify([Required, FromQuery] long queueId, [Required, FromQuery] string licenseKey)
         {
-            // send queueId and licenseKey parameters to corresponding SOAP route, get result and parse it to JSON
-
-            var xmlResult = @"<?xml version='1.0' encoding='utf-8'?>
-            <boolean xmlns='http://ws.cdyne.com/NotifyWS/'>true</boolean>";
-
-            var json = XmlHelper.ParseXmlToJson(xmlResult);
-
-            if (json == null)
+            if (!InputParametersValidator.IsValidGuidFormat(licenseKey))
             {
                 return BadRequest();
             }
 
-            ResultAsBoolean result = new ResultAsBoolean((bool)json["boolean"]["#text"]);
-
-            return Ok(result);
+            return Ok(await _client.CancelNotifyAsync(queueId, licenseKey));
         }
 
         [HttpGet("cancelnotifybyreferenceid")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        public ActionResult<ResultAsInt> CancelNotifyByReferenceID([Required, FromQuery] string referenceId, [Required, FromQuery] string licenseKey)
+        [ProducesResponseType(typeof(int), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<ActionResult<int>> CancelNotifyByReferenceID([Required, FromQuery] string referenceId, [Required, FromQuery] string licenseKey)
         {
-            var xmlResult = @"<?xml version='1.0' encoding='utf-8'?>
-            <int xmlns='http://ws.cdyne.com/NotifyWS/'>1</int>";
-
-            var json = XmlHelper.ParseXmlToJson(xmlResult);
-
-            if (json == null)
+            if (!InputParametersValidator.IsValidGuidFormat(licenseKey))
             {
                 return BadRequest();
             }
 
-            ResultAsInt result = new ResultAsInt((int)json["int"]["#text"]);
-
-            return Ok(result);
+            return Ok(await _client.CancelNotifyByReferenceIDAsync(referenceId, licenseKey));
         }
     }
 }
