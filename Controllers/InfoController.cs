@@ -8,20 +8,27 @@ namespace PhoneNotify.Controllers
     [ApiController]
     [Route("[controller]")]
     [Produces("application/json")]
-    public class AreaCodesController : ControllerBase
+    public class InfoController : ControllerBase
     {
         private readonly PhoneNotifySoap _client;
 
-        public AreaCodesController(PhoneNotifySoap client)
+        public InfoController(PhoneNotifySoap client)
         {
             _client = client;
         }
 
-        [HttpGet("getavailableareacodes")]
+        [HttpGet("GetAvailableAreaCodes")]
         [ProducesResponseType(typeof(AreaCode[]), StatusCodes.Status200OK)]
         public async Task<ActionResult<AreaCode[]>> GetAvailableAreaCodes()
         {
            return Ok(await _client.GetAvailableAreaCodesAsync());
+        }
+
+        [HttpGet("GetResponseCodes")]
+        [ProducesResponseType(typeof(Response[]), StatusCodes.Status200OK)]
+        public async Task<ActionResult<Response[]>> GetResponseCodes()
+        {
+            return Ok(await _client.GetResponseCodesAsync());
         }
     }
 }

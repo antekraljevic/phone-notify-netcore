@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using PhoneNotify.Models;
+using PhoneNotify.Shared;
 using PhoneNotify.Shared.Validators;
 using PhoneNotifySoapService;
 using System.ComponentModel.DataAnnotations;
@@ -19,13 +21,15 @@ namespace PhoneNotify.Controllers
             _client = client;
         }
 
-        [HttpGet("getincomingcallscript")]
+        [HttpGet("GetIncomingCallScript")]
         [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
-        public async Task<ActionResult<string>> GetIncomingCallScript([Required, FromQuery] string phoneNumber, [Required, FromQuery] string licenseKey)
+        [ProducesResponseType(typeof(ErrorDetails), StatusCodes.Status400BadRequest)]
+        public async Task<ActionResult<string>> GetIncomingCallScript([Required, FromQuery] string phoneNumber)
         {
+            string licenseKey = (string)HttpContext.Items[Constants.RequestParameters.LicenseKey];
             if (!InputParametersValidator.IsValidGuidFormat(licenseKey))
             {
-                return BadRequest();
+                return BadRequest(ErrorDetails.InvalidLicenseKeyFormat);
             }
 
             return Ok(await _client.GetIncomingCallScriptAsync(phoneNumber, licenseKey));

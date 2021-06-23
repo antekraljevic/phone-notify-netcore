@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using PhoneNotify.Models;
+using PhoneNotify.Shared;
 using PhoneNotify.Shared.Validators;
 using PhoneNotifySoapService;
 using System.ComponentModel.DataAnnotations;
@@ -19,47 +21,50 @@ namespace PhoneNotify.Controllers
             _client = client;
         }
 
-        [HttpGet("getqueueidstatus")]
+        [HttpGet("GetQueueIDStatus")]
         [ProducesResponseType(typeof(NotifyReturn), StatusCodes.Status200OK)]
         public async Task<ActionResult<NotifyReturn>> GetQueueIDStatus([Required, FromQuery] long queueId)
         {
             return Ok(await _client.GetQueueIDStatusAsync(queueId));
         }
 
-        [HttpGet("getqueueidstatuswithadvancedinfo")]
+        [HttpGet("GetQueueIDStatusWithAdvancedInfo")]
         [ProducesResponseType(typeof(NotifyReturn), StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<NotifyReturn>> GetQueueIDStatusWithAdvancedInfo([Required, FromQuery] long queueId, [Required, FromQuery] string licenseKey)
+        [ProducesResponseType(typeof(ErrorDetails), StatusCodes.Status400BadRequest)]
+        public async Task<ActionResult<NotifyReturn>> GetQueueIDStatusWithAdvancedInfo([Required, FromQuery] long queueId)
         {
+            string licenseKey = (string)HttpContext.Items[Constants.RequestParameters.LicenseKey];
             if (!InputParametersValidator.IsValidGuidFormat(licenseKey))
             {
-                return BadRequest();
+                return BadRequest(ErrorDetails.InvalidLicenseKeyFormat);
             }
 
             return Ok(await _client.GetQueueIDStatusWithAdvancedInfoAsync(queueId, licenseKey));
         }
 
-        [HttpGet("getqueueidstatusesbyphonenumber")]
+        [HttpGet("GetQueueIDStatusesByPhoneNumber")]
         [ProducesResponseType(typeof(NotifyReturn[]), StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<NotifyReturn[]>> GetQueueIDStatusesByPhoneNumber([Required, FromQuery] string phoneNumber, [Required, FromQuery] string licenseKey)
+        [ProducesResponseType(typeof(ErrorDetails), StatusCodes.Status400BadRequest)]
+        public async Task<ActionResult<NotifyReturn[]>> GetQueueIDStatusesByPhoneNumber([Required, FromQuery] string phoneNumber)
         {
+            string licenseKey = (string)HttpContext.Items[Constants.RequestParameters.LicenseKey];
             if (!InputParametersValidator.IsValidGuidFormat(licenseKey))
             {
-                return BadRequest();
+                return BadRequest(ErrorDetails.InvalidLicenseKeyFormat);
             }
 
             return Ok(await _client.GetQueueIDStatusesByPhoneNumberAsync(phoneNumber, licenseKey));
         }
 
-        [HttpGet("getmultiplequeueidstatus")]
+        [HttpGet("GetMultipleQueueIdStatus")]
         [ProducesResponseType(typeof(NotifyReturn[]), StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<NotifyReturn[]>> GetMultipleQueueIdStatus([Required, FromQuery] string queueIds, [Required, FromQuery] string licenseKey)
+        [ProducesResponseType(typeof(ErrorDetails), StatusCodes.Status400BadRequest)]
+        public async Task<ActionResult<NotifyReturn[]>> GetMultipleQueueIdStatus([Required, FromQuery] string queueIds)
         {
-            if (!InputParametersValidator.IsValidQueueIDsParameterFormat(queueIds) || !InputParametersValidator.IsValidGuidFormat(licenseKey))
+            string licenseKey = (string)HttpContext.Items[Constants.RequestParameters.LicenseKey];
+            if (!InputParametersValidator.IsValidGuidFormat(licenseKey))
             {
-                return BadRequest();
+                return BadRequest(ErrorDetails.InvalidLicenseKeyFormat);
             }
 
             return Ok(await _client.GetMultipleQueueIdStatusAsync(queueIds, licenseKey));

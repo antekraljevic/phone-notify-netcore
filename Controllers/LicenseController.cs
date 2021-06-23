@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using PhoneNotify.Models;
+using PhoneNotify.Shared;
 using PhoneNotify.Shared.Validators;
 using PhoneNotifySoapService;
 using System.ComponentModel.DataAnnotations;
@@ -20,27 +22,29 @@ namespace PhoneNotify.Controllers
             _client = client;
         }
 
-        [HttpGet("assignincomingnumber")]
+        [HttpGet("AssignIncomingNumber")]
         [ProducesResponseType(typeof(bool), StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<bool>> AssignIncomingNumber([Required, FromQuery] string incomingPhoneNumber, [Required, FromQuery] string licenseKey)
+        [ProducesResponseType(typeof(ErrorDetails), StatusCodes.Status400BadRequest)]
+        public async Task<ActionResult<bool>> AssignIncomingNumber([Required, FromQuery] string incomingPhoneNumber)
         {
+            string licenseKey = (string)HttpContext.Items[Constants.RequestParameters.LicenseKey];
             if (!InputParametersValidator.IsValidGuidFormat(licenseKey))
             {
-                return BadRequest();
+                return BadRequest(ErrorDetails.InvalidLicenseKeyFormat);
             }
 
             return Ok(await _client.AssignIncomingNumberAsync(incomingPhoneNumber, licenseKey));
         }
 
-        [HttpGet("getassignednumbers")]
+        [HttpGet("GetAssignedNumbers")]
         [ProducesResponseType(typeof(string[]), StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<string[]>> GetAssignedNumbers([Required, FromQuery] string licenseKey)
+        [ProducesResponseType(typeof(ErrorDetails), StatusCodes.Status400BadRequest)]
+        public async Task<ActionResult<string[]>> GetAssignedNumbers()
         {
+            string licenseKey = (string)HttpContext.Items[Constants.RequestParameters.LicenseKey];
             if (!InputParametersValidator.IsValidGuidFormat(licenseKey))
             {
-                return BadRequest();
+                return BadRequest(ErrorDetails.InvalidLicenseKeyFormat);
             }
 
             return Ok(await _client.GetAssignedNumbersAsync(licenseKey));

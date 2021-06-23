@@ -17,7 +17,7 @@ namespace PhoneNotify.Controllers
             _client = client;
         }
 
-        [HttpGet("getavailableincomingnumbers")]
+        [HttpGet("GetAvailableIncomingNumbers")]
         [ProducesResponseType(typeof(string[]), StatusCodes.Status200OK)]
         public async Task<ActionResult<string[]>> GetAvailableIncomingNumbers([FromQuery] string areaCodeFilter)
         {

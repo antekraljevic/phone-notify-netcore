@@ -11,6 +11,11 @@ namespace PhoneNotify.Models
         public int StatusCode { get; set; }
         public string Message { get; set; }
 
+        public ErrorDetails()
+        {
+
+        }
+
         public ErrorDetails(int statusCode, string message)
         {
             this.StatusCode = statusCode;
@@ -21,5 +26,8 @@ namespace PhoneNotify.Models
         {
             return JsonConvert.SerializeObject(this);
         }
+
+        public static ErrorDetails InvalidLicenseKeyFormat = new ErrorDetails() { StatusCode = 500, Message = "Invalid licenseKey format." };
+        public static ErrorDetails InvalidConferenceKeyFormat = new ErrorDetails() { StatusCode = 500, Message = "Invalid conferenceKey format." };
     }
 }
