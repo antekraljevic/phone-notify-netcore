@@ -21,6 +21,20 @@ namespace PhoneNotify.Controllers
             _client = client;
         }
 
+        [HttpPost("SetIncomingCallScript")]
+        [ProducesResponseType(typeof(bool), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ErrorDetails), StatusCodes.Status400BadRequest)]
+        public async Task<ActionResult<bool>> SetIncomingCallScript([Required, FromBody] string phoneNumber, [Required, FromBody] string script)
+        {
+            string licenseKey = (string)HttpContext.Items[Constants.RequestParameters.LicenseKey];
+            if (!InputParametersValidator.IsValidGuidFormat(licenseKey))
+            {
+                return BadRequest(ErrorDetails.InvalidLicenseKeyFormat);
+            }
+
+            return Ok(await _client.SetIncomingCallScriptAsync(phoneNumber, script, licenseKey));
+        }
+
         [HttpGet("GetIncomingCallScript")]
         [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ErrorDetails), StatusCodes.Status400BadRequest)]
@@ -33,6 +47,62 @@ namespace PhoneNotify.Controllers
             }
 
             return Ok(await _client.GetIncomingCallScriptAsync(phoneNumber, licenseKey));
+        }
+
+        [HttpPost("ScriptSave")]
+        [ProducesResponseType(typeof(bool), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ErrorDetails), StatusCodes.Status400BadRequest)]
+        public async Task<ActionResult<bool>> ScriptSave([Required, FromBody] string scriptName, [Required, FromBody] string scriptText)
+        {
+            string licenseKey = (string)HttpContext.Items[Constants.RequestParameters.LicenseKey];
+            if (!InputParametersValidator.IsValidGuidFormat(licenseKey))
+            {
+                return BadRequest(ErrorDetails.InvalidLicenseKeyFormat);
+            }
+
+            return Ok(await _client.ScriptSaveAsync(scriptName, scriptText, licenseKey));
+        }
+
+        [HttpGet("ScriptLoad")]
+        [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ErrorDetails), StatusCodes.Status400BadRequest)]
+        public async Task<ActionResult<string>> ScriptLoad([Required, FromQuery] string scriptName)
+        {
+            string licenseKey = (string)HttpContext.Items[Constants.RequestParameters.LicenseKey];
+            if (!InputParametersValidator.IsValidGuidFormat(licenseKey))
+            {
+                return BadRequest(ErrorDetails.InvalidLicenseKeyFormat);
+            }
+
+            return Ok(await _client.ScriptLoadAsync(scriptName, licenseKey));
+        }
+
+        [HttpGet("ScriptList")]
+        [ProducesResponseType(typeof(string[]), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ErrorDetails), StatusCodes.Status400BadRequest)]
+        public async Task<ActionResult<string[]>> ScriptList([FromQuery] bool? includeGlobalScripts)
+        {
+            string licenseKey = (string)HttpContext.Items[Constants.RequestParameters.LicenseKey];
+            if (!InputParametersValidator.IsValidGuidFormat(licenseKey))
+            {
+                return BadRequest(ErrorDetails.InvalidLicenseKeyFormat);
+            }
+
+            return Ok(await _client.ScriptListAsync(includeGlobalScripts.HasValue ? includeGlobalScripts.Value : false, licenseKey));
+        }
+
+        [HttpDelete("ScriptDelete")]
+        [ProducesResponseType(typeof(bool), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ErrorDetails), StatusCodes.Status400BadRequest)]
+        public async Task<ActionResult<bool>> ScriptDelete([Required, FromBody] string scriptName)
+        {
+            string licenseKey = (string)HttpContext.Items[Constants.RequestParameters.LicenseKey];
+            if (!InputParametersValidator.IsValidGuidFormat(licenseKey))
+            {
+                return BadRequest(ErrorDetails.InvalidLicenseKeyFormat);
+            }
+
+            return Ok(await _client.ScriptDeleteAsync(scriptName, licenseKey));
         }
     }
 }
