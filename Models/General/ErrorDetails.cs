@@ -1,10 +1,6 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace PhoneNotify.Models
+namespace PhoneNotify.Models.General
 {
     public class ErrorDetails
     {
@@ -29,5 +25,6 @@ namespace PhoneNotify.Models
 
         public static ErrorDetails InvalidLicenseKeyFormat = new ErrorDetails() { StatusCode = 500, Message = "Invalid licenseKey format." };
         public static ErrorDetails InvalidConferenceKeyFormat = new ErrorDetails() { StatusCode = 500, Message = "Invalid conferenceKey format." };
+        public static ErrorDetails InvalidQueueIDsFormat = new ErrorDetails() { StatusCode = 500, Message = "Invalid queueIDs format." };
     }
 }

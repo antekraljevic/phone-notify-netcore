@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using PhoneNotify.Models;
+using PhoneNotify.Models.General;
+using PhoneNotify.Models.RequestBodies.Script;
 using PhoneNotify.Shared;
 using PhoneNotify.Shared.Validators;
 using PhoneNotifySoapService;
@@ -24,7 +25,7 @@ namespace PhoneNotify.Controllers
         [HttpPost("SetIncomingCallScript")]
         [ProducesResponseType(typeof(bool), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ErrorDetails), StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<bool>> SetIncomingCallScript([Required, FromBody] string phoneNumber, [Required, FromBody] string script)
+        public async Task<ActionResult<bool>> SetIncomingCallScript([FromBody] SetIncomingCallScriptRequestBody requestBody)
         {
             string licenseKey = (string)HttpContext.Items[Constants.RequestParameters.LicenseKey];
             if (!InputParametersValidator.IsValidGuidFormat(licenseKey))
@@ -32,7 +33,7 @@ namespace PhoneNotify.Controllers
                 return BadRequest(ErrorDetails.InvalidLicenseKeyFormat);
             }
 
-            return Ok(await _client.SetIncomingCallScriptAsync(phoneNumber, script, licenseKey));
+            return Ok(await _client.SetIncomingCallScriptAsync(requestBody.PhoneNumber, requestBody.Script, licenseKey));
         }
 
         [HttpGet("GetIncomingCallScript")]
@@ -52,7 +53,7 @@ namespace PhoneNotify.Controllers
         [HttpPost("ScriptSave")]
         [ProducesResponseType(typeof(bool), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ErrorDetails), StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<bool>> ScriptSave([Required, FromBody] string scriptName, [Required, FromBody] string scriptText)
+        public async Task<ActionResult<bool>> ScriptSave([FromBody] ScriptSaveRequestBody requestBody)
         {
             string licenseKey = (string)HttpContext.Items[Constants.RequestParameters.LicenseKey];
             if (!InputParametersValidator.IsValidGuidFormat(licenseKey))
@@ -60,7 +61,7 @@ namespace PhoneNotify.Controllers
                 return BadRequest(ErrorDetails.InvalidLicenseKeyFormat);
             }
 
-            return Ok(await _client.ScriptSaveAsync(scriptName, scriptText, licenseKey));
+            return Ok(await _client.ScriptSaveAsync(requestBody.ScriptName, requestBody.ScriptText, licenseKey));
         }
 
         [HttpGet("ScriptLoad")]
@@ -94,7 +95,7 @@ namespace PhoneNotify.Controllers
         [HttpDelete("ScriptDelete")]
         [ProducesResponseType(typeof(bool), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ErrorDetails), StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<bool>> ScriptDelete([Required, FromBody] string scriptName)
+        public async Task<ActionResult<bool>> ScriptDelete([Required, FromBody] ScriptDeleteRequestBody requestBody)
         {
             string licenseKey = (string)HttpContext.Items[Constants.RequestParameters.LicenseKey];
             if (!InputParametersValidator.IsValidGuidFormat(licenseKey))
@@ -102,7 +103,7 @@ namespace PhoneNotify.Controllers
                 return BadRequest(ErrorDetails.InvalidLicenseKeyFormat);
             }
 
-            return Ok(await _client.ScriptDeleteAsync(scriptName, licenseKey));
+            return Ok(await _client.ScriptDeleteAsync(requestBody.ScriptName, licenseKey));
         }
     }
 }

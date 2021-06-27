@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using PhoneNotify.Models;
+using PhoneNotify.Models.General;
 using PhoneNotify.Shared;
 using PhoneNotify.Shared.Validators;
 using PhoneNotifySoapService;
@@ -12,11 +12,11 @@ namespace PhoneNotify.Controllers
     [ApiController]
     [Route("[controller]")]
     [Produces("application/json")]
-    public class QueueStausIDController : ControllerBase
+    public class StatusReportController : ControllerBase
     {
         private readonly PhoneNotifySoap _client;
 
-        public QueueStausIDController(PhoneNotifySoap client)
+        public StatusReportController(PhoneNotifySoap client)
         {
             _client = client;
         }
@@ -65,6 +65,10 @@ namespace PhoneNotify.Controllers
             if (!InputParametersValidator.IsValidGuidFormat(licenseKey))
             {
                 return BadRequest(ErrorDetails.InvalidLicenseKeyFormat);
+            }
+            if (!InputParametersValidator.IsValidQueueIDsParameterFormat(queueIds))
+            {
+                return BadRequest(ErrorDetails.InvalidQueueIDsFormat);
             }
 
             return Ok(await _client.GetMultipleQueueIdStatusAsync(queueIds, licenseKey));

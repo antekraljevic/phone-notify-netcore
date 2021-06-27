@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using PhoneNotify.Models;
+using PhoneNotify.Models.General;
+using PhoneNotify.Models.RequestBodies.Sound;
 using PhoneNotify.Shared;
 using PhoneNotify.Shared.Helpers;
 using PhoneNotify.Shared.Validators;
@@ -25,7 +26,7 @@ namespace PhoneNotify.Controllers
         [HttpPost("UploadSoundFile")]
         [ProducesResponseType(typeof(UploadSoundFileResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ErrorDetails), StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<UploadSoundFileResponse>> UploadSoundFile([Required, FromBody] UploadSoundFileRequestBody requestBody)
+        public async Task<ActionResult<UploadSoundFileResponse>> UploadSoundFile([FromBody] UploadSoundFileRequestBody requestBody)
         {
             string licenseKey = (string)HttpContext.Items[Constants.RequestParameters.LicenseKey];
             if (!InputParametersValidator.IsValidGuidFormat(licenseKey))
@@ -109,7 +110,7 @@ namespace PhoneNotify.Controllers
         [HttpPost("GetTTSInMP3")]
         [ProducesResponseType(typeof(GetTTSInMP3Response), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ErrorDetails), StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<GetTTSInMP3Response>> GetTTSInMP3([Required, FromBody] GetTTSInMP3RequestBody requestBody)
+        public async Task<ActionResult<GetTTSInMP3Response>> GetTTSInMP3([FromBody] GetTTSInMP3RequestBody requestBody)
         {
             string licenseKey = (string)HttpContext.Items[Constants.RequestParameters.LicenseKey];
             if (!InputParametersValidator.IsValidGuidFormat(licenseKey))
@@ -123,7 +124,7 @@ namespace PhoneNotify.Controllers
         [HttpPost("GetTTSInULAW")]
         [ProducesResponseType(typeof(GetTTSInULAWResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ErrorDetails), StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<GetTTSInULAWResponse>> GetTTSInULAW([Required, FromBody] GetTTSInULAWRequestBody requestBody)
+        public async Task<ActionResult<GetTTSInULAWResponse>> GetTTSInULAW([FromBody] GetTTSInULAWRequestBody requestBody)
         {
             string licenseKey = (string)HttpContext.Items[Constants.RequestParameters.LicenseKey];
             if (!InputParametersValidator.IsValidGuidFormat(licenseKey))
@@ -137,7 +138,7 @@ namespace PhoneNotify.Controllers
         [HttpPost("RecordSoundViaPhoneCall")]
         [ProducesResponseType(typeof(bool), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ErrorDetails), StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<bool>> RecordSoundViaPhoneCall([Required, FromBody] string phoneNumberToDial, [Required, FromBody] string soundFileId)
+        public async Task<ActionResult<bool>> RecordSoundViaPhoneCall([FromBody] RecordSoundViaPhoneCallRequestBody requestBody)
         {
             string licenseKey = (string)HttpContext.Items[Constants.RequestParameters.LicenseKey];
             if (!InputParametersValidator.IsValidGuidFormat(licenseKey))
@@ -145,13 +146,13 @@ namespace PhoneNotify.Controllers
                 return BadRequest(ErrorDetails.InvalidLicenseKeyFormat);
             }
 
-            return Ok(await _client.RecordSoundViaPhoneCallAsync(phoneNumberToDial, soundFileId, licenseKey));
+            return Ok(await _client.RecordSoundViaPhoneCallAsync(requestBody.PhoneNumberToDial, requestBody.SoundFileID, licenseKey));
         }
 
         [HttpDelete("RemoveSoundFile")]
         [ProducesResponseType(typeof(bool), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ErrorDetails), StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<bool>> RemoveSoundFile([Required, FromBody] string soundFileId)
+        public async Task<ActionResult<bool>> RemoveSoundFile([Required, FromBody] RemoveSoundFileRequestBody requestBody)
         {
             string licenseKey = (string)HttpContext.Items[Constants.RequestParameters.LicenseKey];
             if (!InputParametersValidator.IsValidGuidFormat(licenseKey))
@@ -159,13 +160,13 @@ namespace PhoneNotify.Controllers
                 return BadRequest(ErrorDetails.InvalidLicenseKeyFormat);
             }
 
-            return Ok(await _client.RemoveSoundFileAsync(soundFileId, licenseKey));
+            return Ok(await _client.RemoveSoundFileAsync(requestBody.SoundFileID, licenseKey));
         }
 
         [HttpPatch("RenameSoundFile")]
         [ProducesResponseType(typeof(bool), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ErrorDetails), StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<bool>> RenameSoundFile([Required, FromBody] string soundFileId, [Required, FromBody] string newSoundFileId)
+        public async Task<ActionResult<bool>> RenameSoundFile([FromBody] RenameSoundFileRequestBody requestBody)
         {
             string licenseKey = (string)HttpContext.Items[Constants.RequestParameters.LicenseKey];
             if (!InputParametersValidator.IsValidGuidFormat(licenseKey))
@@ -173,7 +174,7 @@ namespace PhoneNotify.Controllers
                 return BadRequest(ErrorDetails.InvalidLicenseKeyFormat);
             }
 
-            return Ok(await _client.RenameSoundFileAsync(soundFileId, newSoundFileId, licenseKey));
+            return Ok(await _client.RenameSoundFileAsync(requestBody.SoundFileID, requestBody.NewSoundFileID, licenseKey));
         }
 
         [HttpGet("ReturnSoundFileIDs")]

@@ -30,5 +30,19 @@ namespace PhoneNotify.Controllers
         {
             return Ok(await _client.GetResponseCodesAsync());
         }
+
+        [HttpGet("GetVersion")]
+        [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
+        public async Task<ActionResult<string>> GetVersion()
+        {
+            return Ok(await _client.GetVersionAsync());
+        }
+
+        [HttpGet("GetVoices")]
+        [ProducesResponseType(typeof(Voice[]), StatusCodes.Status200OK)]
+        public async Task<ActionResult<Voice[]>> GetVoices()
+        {
+            return Ok(await _client.getVoicesAsync());
+        }
     }
 }

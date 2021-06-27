@@ -1,7 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using PhoneNotify.Models;
+using PhoneNotify.Models.General;
+using PhoneNotify.Models.RequestBodies.Cancelling;
 using PhoneNotify.Shared;
 using PhoneNotify.Shared.Validators;
 using PhoneNotifySoapService;
@@ -25,21 +26,21 @@ namespace PhoneNotify.Controllers
         [HttpPost("CancelConference")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ErrorDetails), StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> CancelConference([Required, FromBody] string conferenceKey)
+        public async Task<IActionResult> CancelConference([Required, FromBody] CancelConferenceRequestBody requestBody)
         {
-            if (!InputParametersValidator.IsValidGuidFormat(conferenceKey))
+            if (!InputParametersValidator.IsValidGuidFormat(requestBody.ConferenceKey))
             {
                 return BadRequest(ErrorDetails.InvalidConferenceKeyFormat);
             }
 
-            await _client.CancelConferenceAsync(conferenceKey);
+            await _client.CancelConferenceAsync(requestBody.ConferenceKey);
             return Ok();
         }
 
         [HttpPost("CancelNotify")]
         [ProducesResponseType(typeof(bool), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ErrorDetails), StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<bool>> CancelNotify([Required, FromBody] long queueId)
+        public async Task<ActionResult<bool>> CancelNotify([Required, FromBody] CancelNotifyRequestBody requestBody)
         {
             string licenseKey = (string)HttpContext.Items[Constants.RequestParameters.LicenseKey];
             if (!InputParametersValidator.IsValidGuidFormat(licenseKey))
@@ -47,13 +48,13 @@ namespace PhoneNotify.Controllers
                 return BadRequest(ErrorDetails.InvalidLicenseKeyFormat);
             }
 
-            return Ok(await _client.CancelNotifyAsync(queueId, licenseKey));
+            return Ok(await _client.CancelNotifyAsync(requestBody.QueueID, licenseKey));
         }
 
         [HttpPost("CancelNotifyByReferenceID")]
         [ProducesResponseType(typeof(int), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ErrorDetails), StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<int>> CancelNotifyByReferenceID([Required, FromBody] string referenceId)
+        public async Task<ActionResult<int>> CancelNotifyByReferenceID([Required, FromBody] CancelNotifyByReferenceIDRequestBody requestBody)
         {
             string licenseKey = (string)HttpContext.Items[Constants.RequestParameters.LicenseKey];
             if (!InputParametersValidator.IsValidGuidFormat(licenseKey))
@@ -61,7 +62,7 @@ namespace PhoneNotify.Controllers
                 return BadRequest(ErrorDetails.InvalidLicenseKeyFormat);
             }
 
-            return Ok(await _client.CancelNotifyByReferenceIDAsync(referenceId, licenseKey));
+            return Ok(await _client.CancelNotifyByReferenceIDAsync(requestBody.ReferenceID, licenseKey));
         }
     }
 }

@@ -1,5 +1,7 @@
-﻿using PhoneNotify.Models;
+﻿using PhoneNotify.Models.RequestBodies.ListMember;
+using PhoneNotify.Models.RequestBodies.Sound;
 using PhoneNotifySoapService;
+using System;
 
 namespace PhoneNotify.Shared.Helpers
 {
@@ -33,6 +35,40 @@ namespace PhoneNotify.Shared.Helpers
         public static GetTTSInULAWRequest PrepareGetTTSInULAWSoapRequest(GetTTSInULAWRequestBody requestBody, string licenseKey)
         {
             return new GetTTSInULAWRequest(requestBody.TextToSay, requestBody.VoiceID, requestBody.TTSrate, requestBody.TTSvolume, licenseKey);
+        }
+
+        public static LM_Functions PrepareDialListAdvancedSoapRequest(DialListAdvancedRequestBody requestBody, string licenseKey)
+        {
+            return new LM_Functions() 
+            {
+                CallerID = requestBody.CallerID,
+                CallerIDName = requestBody.CallerIdName,
+                VoiceID = requestBody.VoiceId,
+                TextToSay = requestBody.TextToSay,
+                TryCount = requestBody.TryCount,
+                Extension = requestBody.Extension,
+                TransferNumber = requestBody.TransferNumber,
+                NextTryInSeconds = TryToParseStringToShort(requestBody.NextTryInSeconds),
+                TTSRate = requestBody.TTSRate,
+                TTSVolume = requestBody.TTSVolume,
+                ScheduledUTCDatetime = DateTimeOffset.Parse(requestBody.ScheduledUTCDatetime).UtcDateTime,
+                ListID = requestBody.ListID,
+                DialRecursiveLists = requestBody.DialRecursiveList
+            };
+        }
+
+        private static short TryToParseStringToShort(string valueAsString)
+        {
+            try
+            {
+                short number;
+                bool result = Int16.TryParse(valueAsString, out number);
+                return result == true ? number : (short)60;
+            }
+            catch (Exception)
+            {
+                return 60;
+            }
         }
     }
 }

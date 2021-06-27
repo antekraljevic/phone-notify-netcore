@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
-using PhoneNotify.Models;
+using PhoneNotify.Models.General;
 using System;
 using System.Threading.Tasks;
 
