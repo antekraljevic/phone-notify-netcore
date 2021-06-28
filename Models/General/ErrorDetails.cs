@@ -26,5 +26,6 @@ namespace PhoneNotify.Models.General
         public static ErrorDetails InvalidLicenseKeyFormat = new ErrorDetails() { StatusCode = 500, Message = "Invalid licenseKey format." };
         public static ErrorDetails InvalidConferenceKeyFormat = new ErrorDetails() { StatusCode = 500, Message = "Invalid conferenceKey format." };
         public static ErrorDetails InvalidQueueIDsFormat = new ErrorDetails() { StatusCode = 500, Message = "Invalid queueIDs format." };
+        public static ErrorDetails InvalidPhoneNumbersToDialFormat = new ErrorDetails() { StatusCode = 500, Message = "Invalid phoneNumbersToDial format." };
     }
 }

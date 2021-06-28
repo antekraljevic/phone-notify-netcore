@@ -5,9 +5,9 @@ namespace PhoneNotify.Shared.Validators
 {
     public static class InputParametersValidator
     {
-        public static bool IsValidQueueIDsParameterFormat(string queueIds)
+        public static bool IsValidMultipleValuesSeparatedWithSemicolonParameterFormat(string queueIds)
         {
-            Regex regex = new Regex("^\\d+(;\\d+)*$");
+            Regex regex = new Regex("^\\d+(;\\s*\\d+)*$");
             return regex.Match(queueIds).Success;
         }
 

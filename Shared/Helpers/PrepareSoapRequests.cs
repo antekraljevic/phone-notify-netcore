@@ -1,7 +1,9 @@
 ﻿using PhoneNotify.Models.RequestBodies.ListMember;
+using PhoneNotify.Models.RequestBodies.Notify;
 using PhoneNotify.Models.RequestBodies.Sound;
 using PhoneNotifySoapService;
 using System;
+using System.Collections.Generic;
 
 namespace PhoneNotify.Shared.Helpers
 {
@@ -55,6 +57,57 @@ namespace PhoneNotify.Shared.Helpers
                 ListID = requestBody.ListID,
                 DialRecursiveLists = requestBody.DialRecursiveList
             };
+        }
+
+        public static AdvancedNotifyRequest PrepareNotifyPhoneAdvancedSoapRequest(NotifyPhoneAdvancedRequestBody requestBody, string licenseKey)
+        {
+            return new AdvancedNotifyRequest()
+            {
+                PhoneNumberToDial = requestBody.PhoneNumberToDial,
+                TransferNumber = requestBody.TransferNumber,
+                VoiceID = requestBody.VoiceID,
+                CallerIDNumber = requestBody.CallerID,
+                CallerIDName = requestBody.CallerIDName,
+                TextToSay = requestBody.TextToSay,
+                TryCount = requestBody.TryCount,
+                NextTryInSeconds = requestBody.NextTryInSeconds,
+                UTCScheduledDateTime = DateTimeOffset.Parse(requestBody.UTCScheduledDateTime).UtcDateTime,
+                TTSrate = requestBody.TTSRate,
+                TTSvolume = requestBody.TTSVolume,
+                MaxCallLength = requestBody.MaxCallLength,
+                StatusChangePostUrl = requestBody.StatusChangePostUrl,
+                ReferenceID = requestBody.ReferenceID,
+                LicenseKey = licenseKey
+                
+            };
+        }
+
+        public static AdvancedNotifyRequest[] PrepareNotifyMultiplePhoneAdvancedSoapRequest(List<NotifyPhoneAdvancedRequestBody> requestBody, string licenseKey)
+        {
+            List<AdvancedNotifyRequest> result = new List<AdvancedNotifyRequest>();
+            foreach (var item in requestBody)
+            {
+                result.Add(new AdvancedNotifyRequest()
+                {
+                    PhoneNumberToDial = item.PhoneNumberToDial,
+                    TransferNumber = item.TransferNumber,
+                    VoiceID = item.VoiceID,
+                    CallerIDNumber = item.CallerID,
+                    CallerIDName = item.CallerIDName,
+                    TextToSay = item.TextToSay,
+                    TryCount = item.TryCount,
+                    NextTryInSeconds = item.NextTryInSeconds,
+                    UTCScheduledDateTime = DateTimeOffset.Parse(item.UTCScheduledDateTime).UtcDateTime,
+                    TTSrate = item.TTSRate,
+                    TTSvolume = item.TTSVolume,
+                    MaxCallLength = item.MaxCallLength,
+                    StatusChangePostUrl = item.StatusChangePostUrl,
+                    ReferenceID = item.ReferenceID,
+                    LicenseKey = licenseKey
+
+                });
+            }
+            return result.ToArray();
         }
 
         private static short TryToParseStringToShort(string valueAsString)

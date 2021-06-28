@@ -66,7 +66,7 @@ namespace PhoneNotify.Controllers
             {
                 return BadRequest(ErrorDetails.InvalidLicenseKeyFormat);
             }
-            if (!InputParametersValidator.IsValidQueueIDsParameterFormat(queueIds))
+            if (!InputParametersValidator.IsValidMultipleValuesSeparatedWithSemicolonParameterFormat(queueIds))
             {
                 return BadRequest(ErrorDetails.InvalidQueueIDsFormat);
             }
