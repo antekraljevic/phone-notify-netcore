@@ -4,7 +4,7 @@
     {
         public static class RequestParameters
         {
-            public const string LicenseKey = "licenseKey";
+            public const string LicenseKey = "LicenseKey";
         }
     }
 }

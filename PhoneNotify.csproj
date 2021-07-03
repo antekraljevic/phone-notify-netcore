@@ -5,6 +5,11 @@
     <RootNamespace>PhoneNotify</RootNamespace>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>C:\Users\PC\source\repos\phone-notify\PhoneNotify.xml</DocumentationFile>
+    <OutputPath>bin\</OutputPath>
+  </PropertyGroup>
+
   <ItemGroup>
     <Compile Remove="Connected Services\PhoneNotifySoap\**" />
     <Content Remove="Connected Services\PhoneNotifySoap\**" />

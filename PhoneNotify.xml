@@ -1,0 +1,812 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PhoneNotify</name>
+    </assembly>
+    <members>
+        <member name="T:PhoneNotifySoapService.UploadFileResponse">
+            <remarks/>
+        </member>
+        <member name="P:PhoneNotifySoapService.UploadFileResponse.UploadSuccessful">
+            <remarks/>
+        </member>
+        <member name="P:PhoneNotifySoapService.UploadFileResponse.ErrorResponse">
+            <remarks/>
+        </member>
+        <member name="P:PhoneNotifySoapService.UploadFileResponse.UploadedLengthInSeconds">
+            <remarks/>
+        </member>
+        <member name="T:PhoneNotifySoapService.Voice">
+            <remarks/>
+        </member>
+        <member name="P:PhoneNotifySoapService.Voice.VoiceID">
+            <remarks/>
+        </member>
+        <member name="P:PhoneNotifySoapService.Voice.VoiceName">
+            <remarks/>
+        </member>
+        <member name="P:PhoneNotifySoapService.Voice.VoiceGender">
+            <remarks/>
+        </member>
+        <member name="P:PhoneNotifySoapService.Voice.VoiceAge">
+            <remarks/>
+        </member>
+        <member name="P:PhoneNotifySoapService.Voice.VoiceLanguage">
+            <remarks/>
+        </member>
+        <member name="P:PhoneNotifySoapService.Voice.VoiceSummary">
+            <remarks/>
+        </member>
+        <member name="T:PhoneNotifySoapService.AreaCode">
+            <remarks/>
+        </member>
+        <member name="P:PhoneNotifySoapService.AreaCode.AreaCodeNumber">
+            <remarks/>
+        </member>
+        <member name="P:PhoneNotifySoapService.AreaCode.Location">
+            <remarks/>
+        </member>
+        <member name="T:PhoneNotifySoapService.Response">
+            <remarks/>
+        </member>
+        <member name="P:PhoneNotifySoapService.Response.ResponseCode">
+            <remarks/>
+        </member>
+        <member name="P:PhoneNotifySoapService.Response.ResponseText">
+            <remarks/>
+        </member>
+        <member name="T:PhoneNotifySoapService.LM_Functions">
+            <remarks/>
+        </member>
+        <member name="P:PhoneNotifySoapService.LM_Functions.CallerID">
+            <remarks/>
+        </member>
+        <member name="P:PhoneNotifySoapService.LM_Functions.CallerIDName">
+            <remarks/>
+        </member>
+        <member name="P:PhoneNotifySoapService.LM_Functions.VoiceID">
+            <remarks/>
+        </member>
+        <member name="P:PhoneNotifySoapService.LM_Functions.TextToSay">
+            <remarks/>
+        </member>
+        <member name="P:PhoneNotifySoapService.LM_Functions.TryCount">
+            <remarks/>
+        </member>
+        <member name="P:PhoneNotifySoapService.LM_Functions.Licensekey">
+            <remarks/>
+        </member>
+        <member name="P:PhoneNotifySoapService.LM_Functions.Extension">
+            <remarks/>
+        </member>
+        <member name="P:PhoneNotifySoapService.LM_Functions.TransferNumber">
+            <remarks/>
+        </member>
+        <member name="P:PhoneNotifySoapService.LM_Functions.NextTryInSeconds">
+            <remarks/>
+        </member>
+        <member name="P:PhoneNotifySoapService.LM_Functions.TTSRate">
+            <remarks/>
+        </member>
+        <member name="P:PhoneNotifySoapService.LM_Functions.TTSVolume">
+            <remarks/>
+        </member>
+        <member name="P:PhoneNotifySoapService.LM_Functions.ScheduledUTCDatetime">
+            <remarks/>
+        </member>
+        <member name="P:PhoneNotifySoapService.LM_Functions.ListID">
+            <remarks/>
+        </member>
+        <member name="P:PhoneNotifySoapService.LM_Functions.DialRecursiveLists">
+            <remarks/>
+        </member>
+        <member name="T:PhoneNotifySoapService.LM_DialReturn">
+            <remarks/>
+        </member>
+        <member name="P:PhoneNotifySoapService.LM_DialReturn.Success">
+            <remarks/>
+        </member>
+        <member name="P:PhoneNotifySoapService.LM_DialReturn.BatchID">
+            <remarks/>
+        </member>
+        <member name="P:PhoneNotifySoapService.LM_DialReturn.ResponseCode">
+            <remarks/>
+        </member>
+        <member name="P:PhoneNotifySoapService.LM_DialReturn.ErrorText">
+            <remarks/>
+        </member>
+        <member name="T:PhoneNotifySoapService.LM_ListMembers">
+            <remarks/>
+        </member>
+        <member name="P:PhoneNotifySoapService.LM_ListMembers.ListMemberID">
+            <remarks/>
+        </member>
+        <member name="P:PhoneNotifySoapService.LM_ListMembers.PhoneNumber">
+            <remarks/>
+        </member>
+        <member name="P:PhoneNotifySoapService.LM_ListMembers.ClientID">
+            <remarks/>
+        </member>
+        <member name="P:PhoneNotifySoapService.LM_ListMembers.FirstName">
+            <remarks/>
+        </member>
+        <member name="P:PhoneNotifySoapService.LM_ListMembers.LastName">
+            <remarks/>
+        </member>
+        <member name="T:PhoneNotifySoapService.LM_ListIDs">
+            <remarks/>
+        </member>
+        <member name="P:PhoneNotifySoapService.LM_ListIDs.ListID">
+            <remarks/>
+        </member>
+        <member name="P:PhoneNotifySoapService.LM_ListIDs.ParentListID">
+            <remarks/>
+        </member>
+        <member name="P:PhoneNotifySoapService.LM_ListIDs.ListName">
+            <remarks/>
+        </member>
+        <member name="T:PhoneNotifySoapService.AdvancedNotifyRequest">
+            <remarks/>
+        </member>
+        <member name="P:PhoneNotifySoapService.AdvancedNotifyRequest.PhoneNumberToDial">
+            <remarks/>
+        </member>
+        <member name="P:PhoneNotifySoapService.AdvancedNotifyRequest.TransferNumber">
+            <remarks/>
+        </member>
+        <member name="P:PhoneNotifySoapService.AdvancedNotifyRequest.VoiceID">
+            <remarks/>
+        </member>
+        <member name="P:PhoneNotifySoapService.AdvancedNotifyRequest.CallerIDNumber">
+            <remarks/>
+        </member>
+        <member name="P:PhoneNotifySoapService.AdvancedNotifyRequest.CallerIDName">
+            <remarks/>
+        </member>
+        <member name="P:PhoneNotifySoapService.AdvancedNotifyRequest.TextToSay">
+            <remarks/>
+        </member>
+        <member name="P:PhoneNotifySoapService.AdvancedNotifyRequest.LicenseKey">
+            <remarks/>
+        </member>
+        <member name="P:PhoneNotifySoapService.AdvancedNotifyRequest.TryCount">
+            <remarks/>
+        </member>
+        <member name="P:PhoneNotifySoapService.AdvancedNotifyRequest.NextTryInSeconds">
+            <remarks/>
+        </member>
+        <member name="P:PhoneNotifySoapService.AdvancedNotifyRequest.UTCScheduledDateTime">
+            <remarks/>
+        </member>
+        <member name="P:PhoneNotifySoapService.AdvancedNotifyRequest.TTSrate">
+            <remarks/>
+        </member>
+        <member name="P:PhoneNotifySoapService.AdvancedNotifyRequest.TTSvolume">
+            <remarks/>
+        </member>
+        <member name="P:PhoneNotifySoapService.AdvancedNotifyRequest.MaxCallLength">
+            <remarks/>
+        </member>
+        <member name="P:PhoneNotifySoapService.AdvancedNotifyRequest.StatusChangePostUrl">
+            <remarks/>
+        </member>
+        <member name="P:PhoneNotifySoapService.AdvancedNotifyRequest.ReferenceID">
+            <remarks/>
+        </member>
+        <member name="T:PhoneNotifySoapService.Variable">
+            <remarks/>
+        </member>
+        <member name="P:PhoneNotifySoapService.Variable.VariableName">
+            <remarks/>
+        </member>
+        <member name="P:PhoneNotifySoapService.Variable.VariableValue">
+            <remarks/>
+        </member>
+        <member name="T:PhoneNotifySoapService.NotifyReturn">
+            <remarks/>
+        </member>
+        <member name="P:PhoneNotifySoapService.NotifyReturn.ResponseCode">
+            <remarks/>
+        </member>
+        <member name="P:PhoneNotifySoapService.NotifyReturn.ResponseText">
+            <remarks/>
+        </member>
+        <member name="P:PhoneNotifySoapService.NotifyReturn.CallAnswered">
+            <remarks/>
+        </member>
+        <member name="P:PhoneNotifySoapService.NotifyReturn.QueueID">
+            <remarks/>
+        </member>
+        <member name="P:PhoneNotifySoapService.NotifyReturn.TryCount">
+            <remarks/>
+        </member>
+        <member name="P:PhoneNotifySoapService.NotifyReturn.Demo">
+            <remarks/>
+        </member>
+        <member name="P:PhoneNotifySoapService.NotifyReturn.DigitsPressed">
+            <remarks/>
+        </member>
+        <member name="P:PhoneNotifySoapService.NotifyReturn.MachineDetection">
+            <remarks/>
+        </member>
+        <member name="P:PhoneNotifySoapService.NotifyReturn.Duration">
+            <remarks/>
+        </member>
+        <member name="P:PhoneNotifySoapService.NotifyReturn.StartTime">
+            <remarks/>
+        </member>
+        <member name="P:PhoneNotifySoapService.NotifyReturn.EndTime">
+            <remarks/>
+        </member>
+        <member name="P:PhoneNotifySoapService.NotifyReturn.MinuteRate">
+            <remarks/>
+        </member>
+        <member name="P:PhoneNotifySoapService.NotifyReturn.Country">
+            <remarks/>
+        </member>
+        <member name="P:PhoneNotifySoapService.NotifyReturn.CallComplete">
+            <remarks/>
+        </member>
+        <member name="P:PhoneNotifySoapService.NotifyReturn.TextToSay">
+            <remarks/>
+        </member>
+        <member name="P:PhoneNotifySoapService.NotifyReturn.VariableArray">
+            <remarks/>
+        </member>
+        <member name="M:PhoneNotify.Controllers.CancellingController.CancelConference(PhoneNotify.Models.RequestBodies.Cancelling.CancelConferenceRequestBody)">
+            <summary>
+            Use this method to cancel a conference.
+            </summary>
+            <param name="requestBody">Conference key - The key of the conference you want to cancel (type: string)</param>
+            <returns>void</returns>
+        </member>
+        <member name="M:PhoneNotify.Controllers.CancellingController.CancelNotify(PhoneNotify.Models.RequestBodies.Cancelling.CancelNotifyRequestBody,System.String)">
+            <summary>
+            Use this method to cancel a single notify. This will not cancel completed calls or calls in progress. You will receive credit for any successfully cancelled notify that returns "true."
+            </summary>
+            <param name="requestBody">Queue ID - The ID of a single notify (message) to cancel (type: long)</param>
+            <param name="licenseKey">Your license key, which is required to invoke this web service.</param>
+            <returns>The result of the request. Finished calls cannot be canceled and will return false.</returns>
+        </member>
+        <member name="M:PhoneNotify.Controllers.CancellingController.CancelNotifyByReferenceID(PhoneNotify.Models.RequestBodies.Cancelling.CancelNotifyByReferenceIDRequestBody,System.String)">
+            <summary>
+            Cancels a batch notify by ReferenceID. This will not cancel completed calls or calls in progress. You will be credited for any successfully cancelled notifies and the returned value will be greater than zero.
+            </summary>
+            <param name="requestBody">Reference ID (type: string)</param>
+            <param name="licenseKey">Your license key, which is required to invoke this web service.</param>
+            <returns>int</returns>
+        </member>
+        <member name="M:PhoneNotify.Controllers.IncomingNumbersController.GetAvailableIncomingNumbers(System.String)">
+            <summary>
+            This method will list a random 10 lines available for incoming calls. You can assign these lines via the License/AssignIncomingNumber method to your license key. You can leave the area code field blank to get any available toll-free lines (888 and 877 numbers are currently the most common).
+            </summary>
+            <param name="areaCodeFilter">Area code filter value</param>
+            <returns>A list of incoming numbers.</returns>
+        </member>
+        <member name="M:PhoneNotify.Controllers.InfoController.GetAvailableAreaCodes">
+            <summary>
+            Use this method to get all the available area codes in our system.
+            </summary>
+            <returns>A list of area codes in our system.</returns>
+        </member>
+        <member name="M:PhoneNotify.Controllers.InfoController.GetResponseCodes">
+            <summary>
+            This method returns all response codes that may be returned when invoking Notify methods.
+            </summary>
+            <returns>List of reponse codes.</returns>
+        </member>
+        <member name="M:PhoneNotify.Controllers.InfoController.GetVersion">
+            <summary>
+            This method returns CDYNE Version information
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PhoneNotify.Controllers.InfoController.GetVoices">
+            <summary>
+            This method returns all the voices available for your notification. You can use the VoiceIDs to change the voice used when reading a message.
+            </summary>
+            <returns>List of voices available for your notification</returns>
+        </member>
+        <member name="M:PhoneNotify.Controllers.LicenseController.AssignIncomingNumber(PhoneNotify.Models.RequestBodies.License.AssignIncomingNumberRequestBody,System.String)">
+            <summary>
+            Use this method to assign an incoming number to a license key. Numbers are billed at $5/month per number. Normal fees for transactions apply.
+            </summary>
+            <param name="requestBody">Incoming phone number (type: string)</param>
+            <param name="licenseKey">Your license key, which is required to invoke this web service.</param>
+            <returns>Returns true if assignment was successful. Returns false if the number is already claimed or otherwise unavailable.</returns>
+        </member>
+        <member name="M:PhoneNotify.Controllers.LicenseController.GetAssignedNumbers(System.String)">
+            <summary>
+            Gets a list of Incoming Numbers assigned to a LicenseKey
+            </summary>
+            <param name="licenseKey">Your license key, which is required to invoke this web service.</param>
+            <returns>List of incoming numbers (strings)</returns>
+        </member>
+        <member name="M:PhoneNotify.Controllers.LicenseController.LicenseKeyVariableLoad(System.String,System.String)">
+            <summary>
+            Variable Management - Load a key's variable (The Variable name can be up to 50 characters long).
+            </summary>
+            <param name="variableName">Variable name</param>
+            <param name="licenseKey">Your license key, which is required to invoke this web service.</param>
+            <returns>string</returns>
+        </member>
+        <member name="M:PhoneNotify.Controllers.LicenseController.LicenseKeyVariableSave(PhoneNotify.Models.RequestBodies.License.LicenseKeyVariableSaveRequestBody,System.String)">
+            <summary>
+            Variable Management - Save a variable (VariableName can only be 50 characters or less). Saving a Variable with an existing name will overwrite the old Variable. Saving a blank value will delete the variable.
+            </summary>
+            <param name="requestBody">
+            <para>Variable name (type: string)</para>
+            <para>Variable value (type: string)</para>
+            </param>
+            <param name="licenseKey">Your license key, which is required to invoke this web service.</param>
+            <returns>Success info as boolean value</returns>
+        </member>
+        <member name="M:PhoneNotify.Controllers.ListMemberController.AddNewList(PhoneNotify.Models.RequestBodies.ListMember.AddNewListRequestBody,System.String)">
+            <summary>
+            Use this method to create a list. Lists are used to store a list of contacts (members). Use the /ListMember/DialList method to send a message to all the members of a list.
+            </summary>
+            <param name="requestBody">
+            <para>ListName (type: string) - The name you want to apply to the new list.</para>
+            <para>ParentListID (type: int) - The ID of a list which will be this list's parent. If you don't want your list to have a parent, set this value to 0.</para>
+            </param>
+            <param name="licenseKey">Your license key, which is required to invoke this web service.</param>
+            <returns>The ID that the system assigned to the list. You will need this ID to alter or send messages to the list.</returns>
+        </member>
+        <member name="M:PhoneNotify.Controllers.ListMemberController.AlterListID(PhoneNotify.Models.RequestBodies.ListMember.AlterListIDRequestBody,System.String)">
+            <summary>
+            Use this method to change the parent or name of an existing list.
+            </summary>
+            <param name="requestBody">
+            <para>ListID (type: int) - The list's ID.</para>
+            <para>ParentListID (type: int) - The ID of a list which will be this list's parent. If you don't want your list to have a parent, set this value to 0. To leave the parent list setting unchanged, set this value to -1.</para>
+            <para>ListName (type: string) - The name you want to apply to the new list.</para>
+            </param>
+            <param name="licenseKey">Your license key, which is required to invoke this web service.</param>
+            <returns>Returns true if the operation succeeded, false if not.</returns>
+        </member>
+        <member name="M:PhoneNotify.Controllers.ListMemberController.DeleteList(PhoneNotify.Models.RequestBodies.ListMember.DeleteListRequestBody,System.String)">
+            <summary>
+            Use this method to delete a list and all its sub-lists (the lists that have it as their ParentListID).
+            </summary>
+            <param name="requestBody">ListID (type: int) - The ID of the list you want to delete.</param>
+            <param name="licenseKey">Your license key, which is required to invoke this web service.</param>
+            <returns>Returns true if the operation succeeded, false if not.</returns>
+        </member>
+        <member name="M:PhoneNotify.Controllers.ListMemberController.DialList(PhoneNotify.Models.RequestBodies.ListMember.DialListRequestBody,System.String)">
+             <summary>
+             Use this method to dial all the members of a list. Use the /ListMember/DialListAdvanced method to specify advanced options for dialing a list.
+             </summary>
+             <param name="requestBody">
+            <para>ListID (type: int) - The ID of the list to dial.</para>
+            <para>DialRecursiveLists	(type: boolean)</para>
+            <para>CallerID (type: string) - The number to display on the receiving party's Caller ID.</para>
+            <para>CallerIDName (type: string) - The name to display on the receiving party's Caller ID. (Not commonly used, because most carriers will use their own directory assistance to display name information.)</para>
+            <para>VoiceID (type: byte) - The text-to-speech voice ID.</para>
+            <para>TextToSay (type: string) - The text-to-speech text or combination of text-to-speech and script to be read to the receiving party.</para>
+             </param>
+             <param name="licenseKey">Your license key, which is required to invoke this web service.</param>
+             <returns>LM_DialReturn object</returns>
+        </member>
+        <member name="M:PhoneNotify.Controllers.ListMemberController.DialListAdvanced(PhoneNotify.Models.RequestBodies.ListMember.DialListAdvancedRequestBody,System.String)">
+            <summary>
+            Use this method to dial all the members of a list. This method allows you to set advanced options, including the time to send. If you don't need advanced options, use the /ListMember/DialList method.
+            </summary>
+            <param name="requestBody">
+            <para>CallerID (type: string) - The number to display on the receiving party's Caller ID.</para>
+            <para>CallerIDName (type: string) - The name to display on the receiving party's Caller ID. (Not commonly used, because most carriers will use their own directory assistance to display name information.)</para>
+            <para>VoiceID (type: byte) - The text-to-speech voice ID.</para>
+            <para>TextToSay (type: string) - The text-to-speech text or combination of text-to-speech and script to be read to the receiving party.</para>
+            <para>TryCount (type: byte) - The number of times to attempt dialing if the initial call is unanswered or busy.</para>
+            <para>Extension (type: string)</para>
+            <para>TransferNumber (type: string) - The phone number that the call will be transferred to if the call recipient presses 0. Transfer behavior can be further modified with TextToSay commands.</para>
+            <para>NextTryInSeconds (type: string) - The number of seconds to wait until the next retry is performed if the original call is unanswered or busy. We recommend waiting at least 60 seconds.</para>
+            <para>TTSRate (type: byte) - The speed that text-to-speech (TTS) will use when speaking the text. The value ranges from 0 to 20 (10 being normal). This can also be controlled within the TextToSay parameter.</para>
+            <para>TTSVolume (type: byte) - The volume that text-to-speech (TTS) will use when speaking the text. The value ranges from 0 to 100 (100 is the default). This can also be controlled within the TextToSay parameter.</para>
+            <para>ScheduledUTCDatetime (type: string) - The date and time at which to send the call. This is specified as Coordinated Universal Time (UTC).</para>
+            <para>ListID (type: int) - The ID of the list to dial.</para>
+            <para>DialRecursiveLists (type: boolean) - </para>
+            </param>
+            <param name="licenseKey">Your license key, which is required to invoke this web service.</param>
+            <returns>LM_DialReturn object</returns>
+        </member>
+        <member name="M:PhoneNotify.Controllers.ListMemberController.GetListIDsByLicensekey(System.String)">
+            <summary>
+            Use this method to get all the list IDs from a specific license key.
+            </summary>
+            <param name="licenseKey">Your license key, which is required to invoke this web service.</param>
+            <returns>Array of LM_ListIDs objects</returns>
+        </member>
+        <member name="M:PhoneNotify.Controllers.ListMemberController.AddListMember(PhoneNotify.Models.RequestBodies.ListMember.AddListMemberRequestBody,System.String)">
+            <summary>
+            Use this method to add contacts (members) to a list. If you don't have a list yet, create it first using the /ListMember/AddNewList method.
+            </summary>
+            <param name="requestBody">
+            <para>ListID (type: int) - The ID of the list that the new member will be added to.</para>
+            <para>PhoneNumber (type: string) - The member's phone number.</para>
+            <para>ClientID (type: string) - The member's business or consumer full name. This parameter can also be used to save additional information about the member.</para>
+            <para>FirstName (type: string) - The member's first name.</para>
+            <para>LastName (type: string) - The member's last name.</para>
+            </param>
+            <param name="licenseKey">Your license key, which is required to invoke this web service.</param>
+            <returns>The ID that the system assigned to the member. You will need this ID to alter the member.</returns>
+        </member>
+        <member name="M:PhoneNotify.Controllers.ListMemberController.AlterListMember(PhoneNotify.Models.RequestBodies.ListMember.AlterListMemberRequestBody,System.String)">
+            <summary>
+            Use this method to alter an existing list member (contact).
+            </summary>
+            <param name="requestBody">
+            <para>ListMemberID (type: int) - The member's ID.</para>
+            <para>ClientID (type: string) - The member's business or consumer full name. This parameter can also be used to save additional information about the member.</para>
+            <para>FirstName (type: string) - The member's first name.</para>
+            <para>LastName (type: string) - The member's last name.</para>
+            <para>PhoneNumber (type: string) - The member's phone number.</para>
+            </param>
+            <param name="licenseKey">Your license key, which is required to invoke this web service.</param>
+            <returns>Returns true if the operation succeeded, false if not.</returns>
+        </member>
+        <member name="M:PhoneNotify.Controllers.ListMemberController.DeleteListMember(PhoneNotify.Models.RequestBodies.ListMember.DeleteListMemberRequestBody,System.String)">
+            <summary>
+            Use this method to delete a member (contact) from a list.
+            </summary>
+            <param name="requestBody">ListMemberID (type: int) - The ID of the member you want to delete.</param>
+            <param name="licenseKey">Your license key, which is required to invoke this web service.</param>
+            <returns>Returns true if the operation succeeded, false if not.</returns>
+        </member>
+        <member name="M:PhoneNotify.Controllers.ListMemberController.GetListMembersByListID(System.Int32,System.String)">
+            <summary>
+            Use this method to get all the members (contacts) in a list.    
+            </summary>
+            <param name="listID">The ID of the list you want to get.</param>
+            <param name="licenseKey">Your license key, which is required to invoke this web service.</param>
+            <returns>Array of LM_ListMembers objects</returns>
+        </member>
+        <member name="M:PhoneNotify.Controllers.NotifyController.NotifyPhoneBasic(PhoneNotify.Models.RequestBodies.Notify.NotifyPhoneBasicRequestBody,System.String)">
+            <summary>
+            Use this method to call any phone number in the US/Canada and read the value of TextToSay to that phone number.
+            </summary>
+            <param name="requestBody">
+            <para>PhoneNumberToDial (type: string) - The phone number to call. It can be in any format, as long as there are 10 digits. To dial an extension, add "x" followed by the extension.</para>
+            <para>TextToSay (type: string) - The text-to-speech text or combination of text-to-speech and script to be read to the receiving party.</para>
+            <para>CallerID (type: string) - The number to display on the receiving party's Caller ID.</para>
+            <para>CallerIDName (type: string) - The name to display on the receiving party's Caller ID. (Not commonly used, because most carriers will use their own directory assistance to display name information.)</para>
+            <para>VoiceID (type: string) - The text-to-speech voice ID.</para>
+            </param>
+            <param name="licenseKey">Your license key, which is required to invoke this web service.</param>
+            <returns>NotifyReturn object</returns>
+        </member>
+        <member name="M:PhoneNotify.Controllers.NotifyController.NotifyPhoneBasicWithTryCount(PhoneNotify.Models.RequestBodies.Notify.NotifyPhoneBasicWithTryCountRequestBody,System.String)">
+            <summary>
+            Use this method to call any phone number in the US/Canada and read the value of TextToSay to that phone number. Use the TryCount parameter to specify the number of times the operation should retry the call if the original call is unanswered or busy.
+            </summary>
+            <param name="requestBody">
+            <para>TryCount (type: string) - The number of retries to attempt if original call is unanswered or busy. The maximum is 3.</para>
+            <para>PhoneNumberToDial (type: string) - The phone number to call. It can be in any format, as long as there are 10 digits. To dial an extension, add "x" followed by the extension.</para>
+            <para>TextToSay (type: string) - The text-to-speech text or combination of text-to-speech and script to be read to the receiving party.</para>
+            <para>CallerID (type: string) - The number to display on the receiving party's Caller ID.</para>
+            <para>CallerIDName (type: string) - The name to display on the receiving party's Caller ID. (Not commonly used, because most carriers will use their own directory assistance to display name information.)</para>
+            <para>VoiceID (type: string) - The text-to-speech voice ID.</para>
+            </param>
+            <param name="licenseKey">Your license key, which is required to invoke this web service.</param>
+            <returns>NotifyReturn object</returns>
+        </member>
+        <member name="M:PhoneNotify.Controllers.NotifyController.NotifyPhoneBasicWithTransfer(PhoneNotify.Models.RequestBodies.Notify.NotifyPhoneBasicWithTransferRequestBody,System.String)">
+            <summary>
+            Use this method to call any phone number in the US/Canada and read the value of TextToSay to that phone number. It also allows you to transfer a call by pressing 0.
+            </summary>
+            <param name="requestBody">
+            <para>PhoneNumberToDial (type: string) - The phone number to call. It can be in any format, as long as there are 10 digits. To dial an extension, add "x" followed by the extension.</para>
+            <para>TransferNumber (type: string) - The phone number that the call will be transferred to if the call recipient presses 0. Transfer behavior can be further modified with TextToSay commands.</para>
+            <para>TextToSay (type: string) - The text-to-speech text or combination of text-to-speech and script to be read to the receiving party.</para>
+            <para>CallerID (type: string) - The number to display on the receiving party's Caller ID.</para>
+            <para>CallerIDName (type: string) - The name to display on the receiving party's Caller ID. (Not commonly used, because most carriers will use their own directory assistance to display name information.)</para>
+            <para>VoiceID (type: string) - The text-to-speech voice ID.</para>
+            </param>
+            <param name="licenseKey">Your license key, which is required to invoke this web service.</param>
+            <returns>NotifyReturn object</returns>
+        </member>
+        <member name="M:PhoneNotify.Controllers.NotifyController.NotifyPhoneEnglishBasic(PhoneNotify.Models.RequestBodies.Notify.NotifyPhoneEnglishBasicRequestBody,System.String)">
+            <summary>
+            Use this method to call any phone number in the US/Canada and read the value of TextToSay to that phone number using the voice of Diane (VoiceID: 0).
+            </summary>
+            <param name="requestBody">
+            <para>PhoneNumberToDial (type: string) - The phone number to call. It can be in any format, as long as there are 10 digits. To dial an extension, add "x" followed by the extension.</para>
+            <para>TextToSay (type: string) - The text-to-speech text or combination of text-to-speech and script to be read to the receiving party.</para>
+            </param>
+            <param name="licenseKey">Your license key, which is required to invoke this web service.</param>
+            <returns>NotifyReturn object</returns>
+        </member>
+        <member name="M:PhoneNotify.Controllers.NotifyController.NotifyMultiplePhoneBasic(PhoneNotify.Models.RequestBodies.Notify.NotifyMultiplePhoneBasicRequestBody,System.String)">
+            <summary>
+            Use this method to call multiple phone numbers in the US/Canada and read the value of TextToSay to them.
+            </summary>
+            <param name="requestBody">
+            <para>PhoneNumbersToDial (type: string) - The phone numbers to call. Separate each number with a semicolon.</para>
+            <para>TextToSay (type: string) - The text-to-speech text or combination of text-to-speech and script to be read to the receiving party.</para>
+            <para>CallerID (type: string) - The number to display on the receiving party's Caller ID.</para>
+            <para>CallerIDName (type: string) - The name to display on the receiving party's Caller ID. (Not commonly used, because most carriers will use their own directory assistance to display name information.)</para>
+            <para>VoiceID (type: string) - The text-to-speech voice ID.</para>
+            </param>
+            <param name="licenseKey">Your license key, which is required to invoke this web service.</param>
+            <returns>Array of NotifyReturn objects</returns>
+        </member>
+        <member name="M:PhoneNotify.Controllers.NotifyController.NotifyMultiplePhoneBasicWithCPM(PhoneNotify.Models.RequestBodies.Notify.NotifyMultiplePhoneBasicWithCPMRequestBody,System.String)">
+            <summary>
+            Use this method to call multiple phone numbers in the US/Canada and read the value of TextToSay to them. Additionally, you can use the CallsPerMinute parameter to set the number of calls per minute (CPM).
+            </summary>
+            <param name="requestBody">
+            <para>PhoneNumbersToDial (type: string) - The phone numbers to call. Separate each number with a semicolon.</para>
+            <para>TextToSay (type: string) - The text-to-speech text or combination of text-to-speech and script to be read to the receiving party.</para>
+            <para>CallerID (type: string) - The number to display on the receiving party's Caller ID.</para>
+            <para>CallerIDName (type: string) - The name to display on the receiving party's Caller ID. (Not commonly used, because most carriers will use their own directory assistance to display name information.)</para>
+            <para>VoiceID (type: string) - The text-to-speech voice ID.</para>
+            <para>CallsPerMinute (type: int) - The value to set the calls per minute.</para>
+            </param>
+            <param name="licenseKey">Your license key, which is required to invoke this web service.</param>
+            <returns>Array of NotifyReturn objects</returns>
+        </member>
+        <member name="M:PhoneNotify.Controllers.NotifyController.NotifyMultiplePhoneBasicWithCPMandReferenceID(PhoneNotify.Models.RequestBodies.Notify.NotifyMultiplePhoneBasicWithCPMandReferenceIDRequestBody,System.String)">
+            <summary>
+            Use this method to call multiple phone numbers in the US/Canada and read the value of TextToSay to them. Additionally, you can use the CallsPerMinute and ReferenceID parameters.
+            </summary>
+            <param name="requestBody">
+            <para>PhoneNumbersToDial (type: string) - The phone numbers to call. Separate each number with a semicolon.</para>
+            <para>TextToSay (type: string) - The text-to-speech text or combination of text-to-speech and script to be read to the receiving party.</para>
+            <para>CallerID (type: string) - The number to display on the receiving party's Caller ID.</para>
+            <para>CallerIDName (type: string) - The name to display on the receiving party's Caller ID. (Not commonly used, because most carriers will use their own directory assistance to display name information.)</para>
+            <para>VoiceID (type: string) - The text-to-speech voice ID.</para>
+            <para>CallsPerMinute (type: int) - The value to set the calls per minute.</para>
+            <para>ReferenceID (type: string) - Unique ID that can be set.</para>
+            </param>
+            <param name="licenseKey">Your license key, which is required to invoke this web service.</param>
+            <returns>Array of NotifyReturn objects</returns>
+        </member>
+        <member name="M:PhoneNotify.Controllers.NotifyController.NotifyPhoneAdvanced(PhoneNotify.Models.RequestBodies.Notify.NotifyPhoneAdvancedRequestBody,System.String)">
+            <summary>
+            Use this method to call any phone number in the US/Canada and read the value of TextToSay to that phone number. Use this method if you need to define detailed options for your message.
+            </summary>
+            <param name="requestBody">
+            <para>PhoneNumberToDial (type: string) - The phone number to call. It can be in any format, as long as there are 10 digits. To dial an extension, add "x" followed by the extension.</para>
+            <para>TransferNumber (type: string) - The phone number that the call will be transferred to if the call recipient presses 0. Transfer behavior can be further modified with TextToSay commands.</para>
+            <para>VoiceID (type: int) - The text-to-speech voice ID.</para>
+            <para>CallerID (type: string) - The number to display on the receiving party's Caller ID.</para>
+            <para>CallerIDName (type: string) - The name to display on the receiving party's Caller ID. (Not commonly used, because most carriers will use their own directory assistance to display name information.)</para>
+            <para>TextToSay (type: string) - The text-to-speech text or combination of text-to-speech and script to be read to the receiving party.</para>
+            <para>TryCount (type: int) - The number of times to attempt dialing if the initial call is unanswered or busy.</para>
+            <para>NextTryInSeconds (type: int) - The number of seconds to wait until the next retry is performed if the original call is unanswered or busy. We recommend waiting at least 60 seconds.</para>
+            <para>UTCScheduledDateTime (type: string) - The date and time at which to send the call. This is specified as Coordinated Universal Time (UTC).</para>
+            <para>TTSRate (type: byte) - The speed that text-to-speech (TTS) will use when speaking the text. The value ranges from 0 to 20 (10 being normal). This can also be controlled within the TextToSay parameter.</para>
+            <para>TTSVolume (type: byte) - The volume that text-to-speech (TTS) will use when speaking the text. The value ranges from 0 to 100 (100 is the default). This can also be controlled within the TextToSay parameter.</para>
+            <para>MaxCallLength (type: int) - The maximum time duration of the call. We suggest you do not change this unless you absolutely need to.</para>
+            <para>StatusChangePostUrl (type: string) - The URL to post call status changes to. The URL must be in lowercase. The system posts OutgoingPostback objects for outgoing calls and IncomingPostback objects for incoming calls.</para>
+            <para>ReferenceID (type: string)</para>
+            </param>
+            <param name="licenseKey">Your license key, which is required to invoke this web service.</param>
+            <returns>NotifyReturn object</returns>
+        </member>
+        <member name="M:PhoneNotify.Controllers.NotifyController.NotifyMultiplePhoneAdvanced(System.Collections.Generic.List{PhoneNotify.Models.RequestBodies.Notify.NotifyPhoneAdvancedRequestBody},System.String)">
+            <summary>
+            Use this method to send multiple notifies at a time. We suggest using our list management features for batches of over 100 messages. (See the /ListMember/DialListAdvanced method.)
+            </summary>
+            <param name="requestBody">
+            <para>Array of following:</para>
+            <para>PhoneNumberToDial (type: string) - The phone number to call. It can be in any format, as long as there are 10 digits. To dial an extension, add "x" followed by the extension.</para>
+            <para>TransferNumber (type: string) - The phone number that the call will be transferred to if the call recipient presses 0. Transfer behavior can be further modified with TextToSay commands.</para>
+            <para>VoiceID (type: int) - The text-to-speech voice ID.</para>
+            <para>CallerID (type: string) - The number to display on the receiving party's Caller ID.</para>
+            <para>CallerIDName (type: string) - The name to display on the receiving party's Caller ID. (Not commonly used, because most carriers will use their own directory assistance to display name information.)</para>
+            <para>TextToSay (type: string) - The text-to-speech text or combination of text-to-speech and script to be read to the receiving party.</para>
+            <para>TryCount (type: int) - The number of times to attempt dialing if the initial call is unanswered or busy.</para>
+            <para>NextTryInSeconds (type: int) - The number of seconds to wait until the next retry is performed if the original call is unanswered or busy. We recommend waiting at least 60 seconds.</para>
+            <para>UTCScheduledDateTime (type: string) - The date and time at which to send the call. This is specified as Coordinated Universal Time (UTC).</para>
+            <para>TTSRate (type: byte) - The speed that text-to-speech (TTS) will use when speaking the text. The value ranges from 0 to 20 (10 being normal). This can also be controlled within the TextToSay parameter.</para>
+            <para>TTSVolume (type: byte) - The volume that text-to-speech (TTS) will use when speaking the text. The value ranges from 0 to 100 (100 is the default). This can also be controlled within the TextToSay parameter.</para>
+            <para>MaxCallLength (type: int) - The maximum time duration of the call. We suggest you do not change this unless you absolutely need to.</para>
+            <para>StatusChangePostUrl (type: string) - The URL to post call status changes to. The URL must be in lowercase. The system posts OutgoingPostback objects for outgoing calls and IncomingPostback objects for incoming calls.</para>
+            <para>ReferenceID (type: string)</para>
+            </param>
+            <param name="licenseKey">Your license key, which is required to invoke this web service.</param>
+            <returns>Array of NotifyReturn objects</returns>
+        </member>
+        <member name="M:PhoneNotify.Controllers.ScriptController.SetIncomingCallScript(PhoneNotify.Models.RequestBodies.Script.SetIncomingCallScriptRequestBody,System.String)">
+            <summary>
+            Use this method to update the call script for incoming calls to a particular number. You must have incoming phone numbers set by CDYNE.
+            </summary>
+            <param name="requestBody">
+            <para>PhoneNumber (type: string) - Your incoming phone number, as set up by CDYNE.</para>
+            <para>Script (type: string) - The text-to-speech text or combination of text-to-speech and script for inbound phone call.</para>
+            </param>
+            <param name="licenseKey">Your license key, which is required to invoke this web service.</param>
+            <returns>Returns true if the operation succeeded, false if not.</returns>
+        </member>
+        <member name="M:PhoneNotify.Controllers.ScriptController.GetIncomingCallScript(System.String,System.String)">
+            <summary>
+            Use this method to get the call script for incoming calls to a particular number. You must have incoming phone numbers set by CDYNE.
+            </summary>
+            <param name="phoneNumber">Your incoming phone number, as set up by CDYNE.</param>
+            <param name="licenseKey">Your license key, which is required to invoke this web service.</param>
+            <returns>The script currently in use for incoming calls to the specified phone number.</returns>
+        </member>
+        <member name="M:PhoneNotify.Controllers.ScriptController.ScriptSave(PhoneNotify.Models.RequestBodies.Script.ScriptSaveRequestBody,System.String)">
+            <summary>
+            Use this method to save a script.
+            </summary>
+            <param name="requestBody">
+            <para>ScriptName (type: string) - The script name. 50 characters or fewer. Using an existing name will overwrite the old script.</para>
+            <para>ScriptText (type: string) - The text-to-speech text or combination of text-to-speech and script for inbound phone call.</para>
+            </param>
+            <param name="licenseKey">Your license key, which is required to invoke this web service.</param>
+            <returns>Returns true if the save succeeded, false if not.</returns>
+        </member>
+        <member name="M:PhoneNotify.Controllers.ScriptController.ScriptLoad(System.String,System.String)">
+            <summary>
+            This method return the text (contents) of a script.
+            </summary>
+            <param name="scriptName">The script name. 50 characters or fewer.</param>
+            <param name="licenseKey">Your license key, which is required to invoke this web service.</param>
+            <returns>The specified script.</returns>
+        </member>
+        <member name="M:PhoneNotify.Controllers.ScriptController.ScriptList(System.Nullable{System.Boolean},System.String)">
+            <summary>
+            This method returns a list of the scripts belonging to a license key.
+            </summary>
+            <param name="includeGlobalScripts">Set to true if you wish CDYNE Global scripts to be included.</param>
+            <param name="licenseKey">Your license key, which is required to invoke this web service.</param>
+            <returns>All scripts saved under the License Key provided.</returns>
+        </member>
+        <member name="M:PhoneNotify.Controllers.ScriptController.ScriptDelete(PhoneNotify.Models.RequestBodies.Script.ScriptDeleteRequestBody,System.String)">
+            <summary>
+            Use this method to delete a script.
+            </summary>
+            <param name="requestBody">ScriptName (type: string) - The script name. 50 characters or fewer.</param>
+            <param name="licenseKey">Your license key, which is required to invoke this web service.</param>
+            <returns>Returns true if the deletion succeeded, false if not.</returns>
+        </member>
+        <member name="M:PhoneNotify.Controllers.SoundController.UploadSoundFile(PhoneNotify.Models.RequestBodies.Sound.UploadSoundFileRequestBody,System.String)">
+            <summary>
+            Use this method to upload a sound file. Our system accepts WAV files (PCM, u-Law, A-law, or MS ADPCM). To use the sound file in a message, put tildes (~) around it and start it with a caret (^). Example: Hello ~^soundfile~, you are great. (The message would say "Hello," then play the sound file, and then say "you are great.")
+            </summary>
+            <param name="requestBody">
+            <para>FileBinary (type: byte[]) - The u-Law wav file. The maximum file size allowed is 2 MB. The minimum recommended sound quality is 16-bit mono PCM. Files can be split if they are larger than 2 MB.</para>
+            <para>SoundFileID (type: string) - Name file for future retrieval.</para>
+            </param>
+            <param name="licenseKey">Your license key, which is required to invoke this web service.</param>
+            <returns>UploadSoundFileResponse object</returns>
+        </member>
+        <member name="M:PhoneNotify.Controllers.SoundController.GetSoundFile(System.String,System.String)">
+            <summary>
+            This method returns a sound file.
+            </summary>
+            <param name="soundFileId">The sound file's ID.</param>
+            <param name="licenseKey">Your license key, which is required to invoke this web service.</param>
+            <returns>The Base64 encoded file data.</returns>
+        </member>
+        <member name="M:PhoneNotify.Controllers.SoundController.GetSoundFileInMP3(System.String,System.Int32,System.String)">
+            <summary>
+            This method returns a sound file encoded as an MP3 in 32, 64, or 128 Kpbs.
+            </summary>
+            <param name="soundFileId">The sound file's ID.</param>
+            <param name="bitRate">The desired bitrate for the returned MP3 file. 128 is common for bandwidth reasons, while 192 and 256 are used for higher-quality, larger files.</param>
+            <param name="licenseKey">Your license key, which is required to invoke this web service.</param>
+            <returns>The Base64 encoded file data.</returns>
+        </member>
+        <member name="M:PhoneNotify.Controllers.SoundController.GetSoundFileInUlaw(System.String,System.String)">
+            <summary>
+            This method returns a sound file encoded in u-Law format.
+            </summary>
+            <param name="soundFileId">The sound file's ID.</param>
+            <param name="licenseKey">Your license key, which is required to invoke this web service.</param>
+            <returns>The Base64 encoded file data.</returns>
+        </member>
+        <member name="M:PhoneNotify.Controllers.SoundController.GetSoundFileLength(System.String,System.String)">
+            <summary>
+            This method returns a sound file's length in seconds.
+            </summary>
+            <param name="soundFileId">The sound file's ID.</param>
+            <param name="licenseKey">Your license key, which is required to invoke this web service.</param>
+            <returns>The length of the file, in seconds.</returns>
+        </member>
+        <member name="M:PhoneNotify.Controllers.SoundController.GetSoundFileURL(System.String,System.String)">
+            <summary>
+            This method returns a URL to listen to a particular sound file in MP3.
+            </summary>
+            <param name="soundFileId">The sound file's ID.</param>
+            <param name="licenseKey">Your license key, which is required to invoke this web service.</param>
+            <returns>The URL of MP3 file request.</returns>
+        </member>
+        <member name="M:PhoneNotify.Controllers.SoundController.GetTTSInMP3(PhoneNotify.Models.RequestBodies.Sound.GetTTSInMP3RequestBody,System.String)">
+            <summary>
+            Use this method to convert text into a sound file encoded in MP3 format. Returns an MP3 encoded in 32,64, or 128. Requires additional License Key. Call 1-800-984-3710 or log in at www.cdyne.com to activate the TTS License Key. This key allows you to use the direct download TTS from webservices like Notify. This only allows for TTS to Sound Files. Phone Notify allows use of TTS in the notification call without this key.
+            </summary>
+            <param name="requestBody">
+            <para>TextToSay (type: string) - The text-to-speech text or combination of text-to-speech and script to be read to the receiving party.</para>
+            <para>VoiceID (type: int) - The text-to-speech voice ID.</para>
+            <para>BitRate (type: int) - The bitrate for returned MP3 file. 128 is common for bandwidth reasons while 192 and 256 are utilized for higher quality larger file sizes.</para>
+            <para>TTSrate (type: byte) - The speed that text-to-speech (TTS) will use when speaking the text. The value ranges from 0 to 20 (10 being normal). This can also be controlled within the TextToSay parameter.</para>
+            <para>TTSvolume (type: byte) - The volume that text-to-speech (TTS) will use when speaking the text. The value ranges from 0 to 100 (100 is the default). This can also be controlled within the TextToSay parameter.</para>
+            </param>
+            <param name="licenseKey">Your license key, which is required to invoke this web service.</param>
+            <returns>The result of the text-to-speech file request in MP3 format.</returns>
+        </member>
+        <member name="M:PhoneNotify.Controllers.SoundController.GetTTSInULAW(PhoneNotify.Models.RequestBodies.Sound.GetTTSInULAWRequestBody,System.String)">
+            <summary>
+            Use this method to convert text into a sound file encoded in u-Law format. Requires additional License Key. Call 1-800-984-3710 or log in at www.cdyne.com to activate the TTS License Key. This key allows you to use the direct download TTS from webservices like Notify. This only allows for TTS to Sound Files. Phone Notify allows use of TTS in the notification call without this key.
+            </summary>
+            <param name="requestBody">
+            <para>TextToSay (type: string) - The text-to-speech text or combination of text-to-speech and script to be read to the receiving party.</para>
+            <para>VoiceID (type: int) - The text-to-speech voice ID.</para>
+            <para>TTSrate (type: byte) - The speed that text-to-speech (TTS) will use when speaking the text. The value ranges from 0 to 20 (10 being normal). This can also be controlled within the TextToSay parameter.</para>
+            <para>TTSvolume (type: byte) - The volume that text-to-speech (TTS) will use when speaking the text. The value ranges from 0 to 100 (100 is the default). This can also be controlled within the TextToSay parameter.</para>
+            </param>
+            <param name="licenseKey">Your license key, which is required to invoke this web service.</param>
+            <returns>The result of the text-to-speech file request in ULAW format.</returns>
+        </member>
+        <member name="M:PhoneNotify.Controllers.SoundController.RecordSoundViaPhoneCall(PhoneNotify.Models.RequestBodies.Sound.RecordSoundViaPhoneCallRequestBody,System.String)">
+            <summary>
+            Request the system to call you to record a sound file. The calling ID will be the value of SoundFileID and the number will be 8000000000.
+            </summary>
+            <param name="requestBody">
+            <para>PhoneNumberToDial (type: string) - The phone number the system should call to get a voice recording. To dial an extension, add "x" followed by the extension.</para>
+            <para>SoundFileID (type: string) - The name you want for your file, for use in future retrieval. Must be lowercase and can contain only normal file characters.</para>
+            </param>
+            <param name="licenseKey">Your license key, which is required to invoke this web service.</param>
+            <returns>RecordSoundViaPhoneCallResponse object</returns>
+        </member>
+        <member name="M:PhoneNotify.Controllers.SoundController.RemoveSoundFile(PhoneNotify.Models.RequestBodies.Sound.RemoveSoundFileRequestBody,System.String)">
+            <summary>
+            Use this method to delete the specified sound file.
+            </summary>
+            <param name="requestBody">SoundFileID (type: string) - The Sound File ID to delete.</param>
+            <param name="licenseKey">Your license key, which is required to invoke this web service.</param>
+            <returns>The result of the request.</returns>
+        </member>
+        <member name="M:PhoneNotify.Controllers.SoundController.RenameSoundFile(PhoneNotify.Models.RequestBodies.Sound.RenameSoundFileRequestBody,System.String)">
+            <summary>
+            Use this method to rename the specified sound file.
+            </summary>
+            <param name="requestBody">
+            <para>SoundFileID (type: string) - The current sound file ID(name).</para>
+            <para>NewSoundFileID (type: string) - The new sound file ID (name).</para>
+            </param>
+            <param name="licenseKey">Your license key, which is required to invoke this web service.</param>
+            <returns>The result of the request.</returns>
+        </member>
+        <member name="M:PhoneNotify.Controllers.SoundController.ReturnSoundFileIDs(System.String)">
+            <summary>
+            This method returns the IDs of available sound files that you can add to your stream via your license key.
+            </summary>
+            <param name="licenseKey">Your license key, which is required to invoke this web service.</param>
+            <returns>The IDs of all uploaded or recorded sound files available on your license key.</returns>
+        </member>
+        <member name="M:PhoneNotify.Controllers.StatusReportController.GetQueueIDStatus(System.Int64)">
+            <summary>
+            This method returns the status of a particular message (message).
+            </summary>
+            <param name="queueId">The message's ID, as returned from any Notify operation.</param>
+            <returns>NotifyStatusReturn object</returns>
+        </member>
+        <member name="M:PhoneNotify.Controllers.StatusReportController.GetQueueIDStatusWithAdvancedInfo(System.Int64,System.String)">
+            <summary>
+            This method returns the status of a particular message. This method includes variable information and more.
+            </summary>
+            <param name="queueId">The message's ID, as returned from any Notify operation.</param>
+            <param name="licenseKey">Your license key, which is required to invoke this web service.</param>
+            <returns>NotifyStatusReturn object</returns>
+        </member>
+        <member name="M:PhoneNotify.Controllers.StatusReportController.GetQueueIDStatusesByPhoneNumber(System.String,System.String)">
+            <summary>
+            This method returns the last 10 phone notifications for a particular phone number.
+            </summary>
+            <param name="phoneNumber">The phone number for which you want to get statuses.</param>
+            <param name="licenseKey">Your license key, which is required to invoke this web service.</param>
+            <returns>Array of NotifyStatusReturn objects</returns>
+        </member>
+        <member name="M:PhoneNotify.Controllers.StatusReportController.GetMultipleQueueIdStatus(System.String,System.String)">
+            <summary>
+            This method returns the statuses of multiple notifies (messages).
+            </summary>
+            <param name="queueIds">The messages' IDs, as returned from any Notify operation. Separate the IDs with semicolons.</param>
+            <param name="licenseKey">Your license key, which is required to invoke this web service.</param>
+            <returns>Array of NotifyStatusReturn objects</returns>
+        </member>
+    </members>
+</doc>

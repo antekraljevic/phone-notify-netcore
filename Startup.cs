@@ -6,6 +6,10 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using PhoneNotify.Middleware;
 using PhoneNotifySoapService;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Reflection;
 
 namespace PhoneNotify
 {
@@ -22,8 +26,11 @@ namespace PhoneNotify
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().AddNewtonsoftJson();
+
             services.AddHttpClient();
+
             services.AddControllers();
+
             services.AddScoped<PhoneNotifySoap>(provider => {
                 var client = new PhoneNotifySoapClient(PhoneNotifySoapClient.EndpointConfiguration.PhoneNotifySoap12);
 
@@ -32,9 +39,14 @@ namespace PhoneNotify
 
                 return client;
             });
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v2", new OpenApiInfo { Title = "PhoneNotify", Version = "v2" });
+
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
             });
         }
 

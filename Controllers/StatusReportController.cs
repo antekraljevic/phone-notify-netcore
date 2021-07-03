@@ -21,6 +21,11 @@ namespace PhoneNotify.Controllers
             _client = client;
         }
 
+        /// <summary>
+        /// This method returns the status of a particular message (message).
+        /// </summary>
+        /// <param name="queueId">The message's ID, as returned from any Notify operation.</param>
+        /// <returns>NotifyStatusReturn object</returns>
         [HttpGet("GetQueueIDStatus")]
         [ProducesResponseType(typeof(NotifyReturn), StatusCodes.Status200OK)]
         public async Task<ActionResult<NotifyReturn>> GetQueueIDStatus([Required, FromQuery] long queueId)
@@ -28,12 +33,17 @@ namespace PhoneNotify.Controllers
             return Ok(await _client.GetQueueIDStatusAsync(queueId));
         }
 
+        /// <summary>
+        /// This method returns the status of a particular message. This method includes variable information and more.
+        /// </summary>
+        /// <param name="queueId">The message's ID, as returned from any Notify operation.</param>
+        /// <param name="licenseKey">Your license key, which is required to invoke this web service.</param>
+        /// <returns>NotifyStatusReturn object</returns>
         [HttpGet("GetQueueIDStatusWithAdvancedInfo")]
         [ProducesResponseType(typeof(NotifyReturn), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ErrorDetails), StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<NotifyReturn>> GetQueueIDStatusWithAdvancedInfo([Required, FromQuery] long queueId)
+        public async Task<ActionResult<NotifyReturn>> GetQueueIDStatusWithAdvancedInfo([Required, FromQuery] long queueId, [Required, FromHeader(Name = Constants.RequestParameters.LicenseKey)] string licenseKey)
         {
-            string licenseKey = (string)HttpContext.Items[Constants.RequestParameters.LicenseKey];
             if (!InputParametersValidator.IsValidGuidFormat(licenseKey))
             {
                 return BadRequest(ErrorDetails.InvalidLicenseKeyFormat);
@@ -42,12 +52,17 @@ namespace PhoneNotify.Controllers
             return Ok(await _client.GetQueueIDStatusWithAdvancedInfoAsync(queueId, licenseKey));
         }
 
+        /// <summary>
+        /// This method returns the last 10 phone notifications for a particular phone number.
+        /// </summary>
+        /// <param name="phoneNumber">The phone number for which you want to get statuses.</param>
+        /// <param name="licenseKey">Your license key, which is required to invoke this web service.</param>
+        /// <returns>Array of NotifyStatusReturn objects</returns>
         [HttpGet("GetQueueIDStatusesByPhoneNumber")]
         [ProducesResponseType(typeof(NotifyReturn[]), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ErrorDetails), StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<NotifyReturn[]>> GetQueueIDStatusesByPhoneNumber([Required, FromQuery] string phoneNumber)
+        public async Task<ActionResult<NotifyReturn[]>> GetQueueIDStatusesByPhoneNumber([Required, FromQuery] string phoneNumber, [Required, FromHeader(Name = Constants.RequestParameters.LicenseKey)] string licenseKey)
         {
-            string licenseKey = (string)HttpContext.Items[Constants.RequestParameters.LicenseKey];
             if (!InputParametersValidator.IsValidGuidFormat(licenseKey))
             {
                 return BadRequest(ErrorDetails.InvalidLicenseKeyFormat);
@@ -56,12 +71,17 @@ namespace PhoneNotify.Controllers
             return Ok(await _client.GetQueueIDStatusesByPhoneNumberAsync(phoneNumber, licenseKey));
         }
 
+        /// <summary>
+        /// This method returns the statuses of multiple notifies (messages).
+        /// </summary>
+        /// <param name="queueIds">The messages' IDs, as returned from any Notify operation. Separate the IDs with semicolons.</param>
+        /// <param name="licenseKey">Your license key, which is required to invoke this web service.</param>
+        /// <returns>Array of NotifyStatusReturn objects</returns>
         [HttpGet("GetMultipleQueueIdStatus")]
         [ProducesResponseType(typeof(NotifyReturn[]), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ErrorDetails), StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<NotifyReturn[]>> GetMultipleQueueIdStatus([Required, FromQuery] string queueIds)
+        public async Task<ActionResult<NotifyReturn[]>> GetMultipleQueueIdStatus([Required, FromQuery] string queueIds, [Required, FromHeader(Name = Constants.RequestParameters.LicenseKey)] string licenseKey)
         {
-            string licenseKey = (string)HttpContext.Items[Constants.RequestParameters.LicenseKey];
             if (!InputParametersValidator.IsValidGuidFormat(licenseKey))
             {
                 return BadRequest(ErrorDetails.InvalidLicenseKeyFormat);
